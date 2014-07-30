@@ -16,7 +16,8 @@ var fs = require('fs'),
 	writeFile,
 	mapLocations,
 	mapLocation,
-	locationRef;
+	locationRef,
+	crypto = require('crypto');
 
 locationRef = JSON.parse(fs.readFileSync('./ref/locations.json').toString());
 logger = new winston.Logger();
@@ -346,7 +347,17 @@ combineDataByHash = function() {
 	//merge all of the data into the a-b format and output to file
 	async.each(results, function(result, callback) {
 		jsonMerge(result, function(err, data) {
-			mergedResults.push(data);
+			var temp = {};
+			//TODO: add hash here as ID
+			
+			temp.data = _.clone(data);
+			
+			temp.meta = {
+				status: 'open',
+				workLog: []
+			};
+			
+			mergedResults.push(temp);
 			callback()
 		});
 	},
