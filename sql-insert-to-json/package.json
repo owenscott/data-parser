@@ -1,0 +1,27 @@
+{
+  "name": "sql-insert-to-json",
+  "version": "0.0.4",
+  "description": "Parses SQL INSERT statements to JSON",
+  "main": "app.js",
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "author": {
+    "name": "Owen Scott",
+    "url": "owen.m.scott@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "tape": "~2.13.1",
+    "underscore": "^1.6.0"
+  },
+  "devDependencies": {
+    "tape": "^2.13.4"
+  },
+  "readme": "#SQL Insert Statements to JSON\r\n\r\nThis module takes an array of SQL Insert statements and converts them to JSON objects. For instance:\r\n\r\n\tvar InsertParser = require('sql-insert-to-json'),\r\n\t\tstatements = [\r\n\t\t\t\"INSERT INTO TEST VALUES(1,'foo',NULL)\",\r\n\t\t\t\"INSERT INTO TEST VALUES(NULL,2,'bar')\",\r\n\t\t],\r\n\t\tparser = new InsertParser;\r\n\r\n\tparser.parse(statements);\r\n\r\n\t//returns [ [ '1','foo','NULL' ], [ 'NULL', '2', 'bar' ] ]\r\n\r\nWith a schema:\r\n\r\n\tvar InsertParser = require('sql-insert-to-json'), \r\n\t\tschema = ['value1', 'value2', 'value3'],\r\n\t\tstatements = [\r\n\t\t\t\"INSERT INTO TEST VALUES(1,'foo',NULL)\",\r\n\t\t\t\"INSERT INTO TEST VALUES(NULL,2,'bar')\",\r\n\t\t],\r\n\t\tparser = new InsertParser(schema);\r\n\r\n\tparser.parse(statements);\r\n\r\n\t//returns [ \r\n\t//\t{value1: '1', value2: 'foo', value3: 'NULL' }, \r\n\t//\t{value1: 'NULL', value2: '2', value3: 'bar' } \r\n\t//]",
+  "readmeFilename": "README.md",
+  "gitHead": "b3fcc1d05db92a1529315d35241931bb09e84b23",
+  "_id": "sql-insert-to-json@0.0.4",
+  "_shasum": "2296a1408345bc59d3d3c3ea75f911f7d22aaa82",
+  "_from": "sql-insert-to-json@0.0.4"
+}
