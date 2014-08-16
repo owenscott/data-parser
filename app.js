@@ -157,11 +157,11 @@ processFile = function(file, callback) {
 
 		//TODO: version handling not through a (non)constant and make it more strucutred in the file name
 
-		if (file.substr(0,2) === 'b3' ) {
-			VERSION = '0.2';
+		if (file.substr(0,2) === 'b1' || file.substr(0,2) === 'b2' ) {
+			VERSION = '0.1';
 		}
 		else {
-			VERSION = '0.1';
+			VERSION = '0.2';
 		}
 
 
@@ -194,7 +194,7 @@ processFile = function(file, callback) {
 			assignCoderName,
 			coder = coderName;
 
-
+		logger.info('starting ' + file);
 		rawData = parser.parse(statements);
 
 		//raw data contains three tables which need to be split up
@@ -296,23 +296,28 @@ combineDataByHash = function() {
 		}
 
 	})
-
+	var dones = [];
+	
 	//look for records with the right length
 	_.keys(combinedData).forEach(function(hash) {
 		if (combinedData[hash].length === 2) {
 			goodRecords.push(_.clone(combinedData[hash]));
+			dones.push(hash);
 		}
 		else if (combinedData[hash].length === 1) {
 			shortRecords.push(_.clone(combinedData[hash]));
 		}
 		else if (combinedData[hash].length > 2) {
 			longRecords.push(_.clone(combinedData[hash]));
+			dones.push(hash);
 		}
 		else {
 			badRecords.push(_.clone(combinedData[hash]))
 		}
 	});
 
+	fs.writeFileSync('./output/dones.json', JSON.stringify(dones));
+	
 	if (shortRecords.length) {logger.warn(shortRecords.length + ' hashes found with only one record.')}
 	if (longRecords.length) {logger.warn(longRecords.length + ' hashes found with too many records.')};
 	if( badRecords.length) {logger.warn(badRecords.length + ' hashes found that seem really wrong.');}
@@ -328,20 +333,20 @@ combineDataByHash = function() {
 		results.push(shortenedRecord);
 	});
 
-	shortRecords.forEach(function(record) {
-		var lengthenedRecord = [];
-		lengthenedRecord[0] = record[0];
-		lengthenedRecord[1] = {};
-		_.keys(record[0]).forEach(function(key){
-			if(Array.isArray(record[0][key])) {
-				lengthenedRecord[1][key] = [];
-			}
-			else {
-				lengthenedRecord[1][key] = '';
-			}
-		})
-		results.push(lengthenedRecord);
-	})
+//	shortRecords.forEach(function(record) {
+//		var lengthenedRecord = [];
+//		lengthenedRecord[0] = record[0];
+//		lengthenedRecord[1] = {};
+//		_.keys(record[0]).forEach(function(key){
+//			if(Array.isArray(record[0][key])) {
+//				lengthenedRecord[1][key] = [];
+//			}
+//			else {
+//				lengthenedRecord[1][key] = '';
+//			}
+//		})
+//		results.push(lengthenedRecord);
+//	})
 
 	logger.info('==========================================');
 	logger.info('Merging ' + results.length + ' records');
