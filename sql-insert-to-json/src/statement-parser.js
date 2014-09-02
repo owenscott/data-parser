@@ -25,7 +25,7 @@ var Parser = function (schema) {
 			valueString = statement.substr(insertLength + 1, statement.length - insertLength - 2);
 
 			//split by acceptable commas
-			resultArray = valueString.split(/,(?=')'|,(?=NULL)|,(?=[0-9])/)
+			resultArray = valueString.split(/,(?=')'|,(?=NULL)|,(?=TRUE)|,(?=FALSE)|,(?=[0-9])/)
 
 			//sanitize each element
 			return resultArray.map(function(elem) {

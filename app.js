@@ -161,7 +161,7 @@ processFile = function(file, callback) {
 		if (file.substr(0,2) === 'b1' || file.substr(0,2) === 'b2' ) {
 			VERSION = '0.1';
 		}
-		else if (file.substr(0,2) === 'b3') {
+		else if (file.substr(0,2) === 'b3' || file.substr(0,2) === 'b4') {
 			VERSION = '0.2';
 		}
 		else {
@@ -187,7 +187,7 @@ processFile = function(file, callback) {
 		else {
 			schema = {
 				TENDERNOTICE: ['ID','TENDERNOTICENUMBER','STATUS','URL','CONTRACTDETAILS','ISSUER','PUBLICATIONDATE','PUBLISHEDIN','DOCUMENTPURCHASEDEADLINE','SUBMISSIONDEADLINE','OPENINGDATE','CONTRACTNAME','CONTRACTDESCRIPTION','COSTESTIMATE','ESTIMATECURRENCY','DATASOURCE','AGENCY','HASH','CODER1','CODER2'],
-				CODEDTENDERNOTICE: ['ID', 'TENDER_NOTICE_ID', 'CODER_ID', 'TENDERNOTICENUMBER', 'CONTRACTNUMBER', 'TYPE_GOODS', 'TYPE_SERVICES', 'TYPE_CONSTRUCTION', 'TYPE_MAENANCE', 'PROJECTNAME', 'PROJECTNUMBER', 'PROJECTFUNDER', 'CONTRACTNAME', 'CONTRACTDESCRIPTION', 'COSTESTIMATE', 'ESTIMATECURRENCY', 'DATASOURCE', 'NOTES'],
+				CODEDTENDERNOTICE: ['ID', 'TENDER_NOTICE_ID', 'CODER_ID', 'TENDERNOTICENUMBER', 'CONTRACTNUMBER', 'GOODS', 'SERVICES', 'CONSTRUCTION', 'MAINTENANCE', 'PROJECTNAME', 'PROJECTNUMBER', 'PROJECTFUNDER', 'CONTRACTNAME', 'CONTRACTDESCRIPTION', 'COSTESTIMATE', 'ESTIMATECURRENCY', 'DATASOURCE', 'NOTES'],
 				CODEDLOCATION:  ['ID','CODED_TENDER_NOTICE_ID','ADM1','ADM2','ADM3','ADM4','WARD','OTHER_LOCATION','OTHER_LOCATION_DESC','ACTIVITY_DESC']
 			}
 		}
@@ -207,6 +207,7 @@ processFile = function(file, callback) {
 
 		logger.info('starting ' + file);
 		rawData = parser.parse(statements);
+
 
 		//raw data contains three tables which need to be split up
 		tenderNotices = rawData.TENDERNOTICE;
