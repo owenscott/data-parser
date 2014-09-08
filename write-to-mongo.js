@@ -10,7 +10,8 @@ fs.readFile('./output/output.json', function(err, data) {
 		record._id = mongoObjectId();
 	});
 
-	mongoClient.connect('mongodb://localhost:27017/contracttest2', function(err, db) {
+	mongoClient.connect('mongodb://localhost:27017/contracttest4', function(err, db) {
+		db.collection('contracts').drop();
 		db.collection('contracts').insert(jsonData, function(err, data) {
 			if(err) {throw err}
 			db.close();

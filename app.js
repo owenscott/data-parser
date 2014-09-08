@@ -1,6 +1,6 @@
 var fs = require('fs'),
 	_ = require('underscore'),
-	InsertParser = require('sql-insert-to-json'),
+	InsertParser = require('./sql-insert-to-json/app.js'),
 	winston = require('winston'),
 	jsonMerge = require('json-premerge'),
 	logger,
@@ -16,7 +16,8 @@ var fs = require('fs'),
 	writeFile,
 	mapLocations,
 	mapLocation,
-	locationRef;
+	locationRef,
+	crypto = require('crypto');
 
 locationRef = JSON.parse(fs.readFileSync('./ref/locations.json').toString());
 logger = new winston.Logger();
@@ -207,7 +208,8 @@ processFile = function(file, callback) {
 
 		//only needs to be done because I stupidly left this out of the first version of the schema
 		assignCoderName = function (record) {
-			record['coder'] = coder; //TODO: implement this based on file name
+			// console.log(file.substr(3, file.length - 7));
+			record['coder'] = ''; //TODO: implement this based on file name
 		}
 
 		codedTenderNotices.map (assignCoderName);
@@ -276,14 +278,15 @@ combineDataByHash = function() {
 	logger.info('==========================================');
 	logger.info('Done processing data files. ' + jsonData.length + ' records found.');
 
-
 	jsonData.forEach(function(record) {
-		var recordId = record.scraped.hash,
+
+	var recordId = record.scraped.hash,
 			cleanRecord;
 
-		//clean up record a little bit
+			//clean up record a little bit
 		if (record.coded || record.locations) {
 			cleanRecord = _.clone(record.coded) || {};
+			cleanRecord.scraped = record.scraped || {};
 			cleanRecord.hash = recordId;
 			cleanRecord.locations = _.clone(record.locations) || [];
 
@@ -345,8 +348,29 @@ combineDataByHash = function() {
 
 	//merge all of the data into the a-b format and output to file
 	async.each(results, function(result, callback) {
+		
+		
+		var scraped = _.clone(result[0].scraped);
+		
+		result = _.map(result, function(r) {
+			return _.clone(_.omit(r, 'scraped'));
+		})
+		
+		
 		jsonMerge(result, function(err, data) {
-			mergedResults.push(data);
+			var temp = {};
+			//TODO: add hash here as ID
+			
+			temp.data = _.clone(data);
+			
+			temp.meta = {
+				status: 'open',
+				workLog: []
+			};
+			
+			temp.scraped = scraped;
+			
+			mergedResults.push(temp);
 			callback()
 		});
 	},
