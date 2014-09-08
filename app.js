@@ -24,6 +24,7 @@ logger = new winston.Logger();
 
 logger.add(winston.transports.Console, {colorize:true})
 
+var codedHashes = JSON.parse(fs.readFileSync('./completed-batches/codedHashes-b1.json').toString());
 
 
 cleanNulls = function(arr) {
@@ -157,11 +158,14 @@ processFile = function(file, callback) {
 
 		//TODO: version handling not through a (non)constant and make it more strucutred in the file name
 
-		if (file.substr(0,2) === 'b3' ) {
+		if (file.substr(0,2) === 'b1' || file.substr(0,2) === 'b2' ) {
+			VERSION = '0.1';
+		}
+		else if (file.substr(0,2) === 'b3' || file.substr(0,2) === 'b4') {
 			VERSION = '0.2';
 		}
 		else {
-			VERSION = '0.1';
+			VERSION = '0.3';
 		}
 
 
@@ -175,8 +179,15 @@ processFile = function(file, callback) {
 		}
 		else if ( VERSION === '0.2') {
 			schema = {
-				TENDERNOTICE: ['ID','TENDERNOTICENUMBER','STATUS','URL','CONTRACTDETAILS','ISSUER','PUBLICATIONDATE','PUBLISHEDIN','DOCUMENTPURCHASEDEADLINE','SUBMISSIONDEADLINE','OPENINGDATE','CONTRACTNAME','CONTRACTDESCRIPTION','COSTESTIMATEnumeric','ESTIMATECURRENCY','DATASOURCE','AGENCY','HASH','CODER1','CODER2'],
+				TENDERNOTICE: ['ID','TENDERNOTICENUMBER','STATUS','URL','CONTRACTDETAILS','ISSUER','PUBLICATIONDATE','PUBLISHEDIN','DOCUMENTPURCHASEDEADLINE','SUBMISSIONDEADLINE','OPENINGDATE','CONTRACTNAME','CONTRACTDESCRIPTION','COSTESTIMATE','ESTIMATECURRENCY','DATASOURCE','AGENCY','HASH','CODER1','CODER2'],
 				CODEDTENDERNOTICE: ['ID','TENDER_NOTICE_ID','CODER_ID','TENDERNOTICENUMBER','CONTRACTNUMBER','CONTRACTTYPE','PROJECTNAME','PROJECTNUMBER','PROJECTFUNDER','CONTRACTNAME','CONTRACTDESCRIPTION','COSTESTIMATE','ESTIMATECURRENCY','DATASOURCE','NOTES'],
+				CODEDLOCATION:  ['ID','CODED_TENDER_NOTICE_ID','ADM1','ADM2','ADM3','ADM4','WARD','OTHER_LOCATION','OTHER_LOCATION_DESC','ACTIVITY_DESC']
+			}
+		}
+		else {
+			schema = {
+				TENDERNOTICE: ['ID','TENDERNOTICENUMBER','STATUS','URL','CONTRACTDETAILS','ISSUER','PUBLICATIONDATE','PUBLISHEDIN','DOCUMENTPURCHASEDEADLINE','SUBMISSIONDEADLINE','OPENINGDATE','CONTRACTNAME','CONTRACTDESCRIPTION','COSTESTIMATE','ESTIMATECURRENCY','DATASOURCE','AGENCY','HASH','CODER1','CODER2'],
+				CODEDTENDERNOTICE: ['ID', 'TENDER_NOTICE_ID', 'CODER_ID', 'TENDERNOTICENUMBER', 'CONTRACTNUMBER', 'GOODS', 'SERVICES', 'CONSTRUCTION', 'MAINTENANCE', 'PROJECTNAME', 'PROJECTNUMBER', 'PROJECTFUNDER', 'CONTRACTNAME', 'CONTRACTDESCRIPTION', 'COSTESTIMATE', 'ESTIMATECURRENCY', 'DATASOURCE', 'NOTES'],
 				CODEDLOCATION:  ['ID','CODED_TENDER_NOTICE_ID','ADM1','ADM2','ADM3','ADM4','WARD','OTHER_LOCATION','OTHER_LOCATION_DESC','ACTIVITY_DESC']
 			}
 		}
@@ -194,8 +205,9 @@ processFile = function(file, callback) {
 			assignCoderName,
 			coder = coderName;
 
-
+		logger.info('starting ' + file);
 		rawData = parser.parse(statements);
+
 
 		//raw data contains three tables which need to be split up
 		tenderNotices = rawData.TENDERNOTICE;
@@ -249,7 +261,11 @@ processFile = function(file, callback) {
 				resultObj.locations = mapLocations(resultObj.locations);
 			}
 
-			results.push(resultObj);
+			//add resultObject to output if it hasn't been coded already in another batch
+			if (!_.contains(codedHashes, resultObj.scraped.hash)) {
+				results.push(resultObj);				
+			}
+
 
 
 		})
@@ -296,23 +312,28 @@ combineDataByHash = function() {
 		}
 
 	})
-
+	var dones = [];
+	
 	//look for records with the right length
 	_.keys(combinedData).forEach(function(hash) {
 		if (combinedData[hash].length === 2) {
 			goodRecords.push(_.clone(combinedData[hash]));
+			dones.push(hash);
 		}
 		else if (combinedData[hash].length === 1) {
 			shortRecords.push(_.clone(combinedData[hash]));
 		}
 		else if (combinedData[hash].length > 2) {
 			longRecords.push(_.clone(combinedData[hash]));
+			dones.push(hash);
 		}
 		else {
 			badRecords.push(_.clone(combinedData[hash]))
 		}
 	});
 
+	fs.writeFileSync('./output/dones.json', JSON.stringify(dones));
+	
 	if (shortRecords.length) {logger.warn(shortRecords.length + ' hashes found with only one record.')}
 	if (longRecords.length) {logger.warn(longRecords.length + ' hashes found with too many records.')};
 	if( badRecords.length) {logger.warn(badRecords.length + ' hashes found that seem really wrong.');}
@@ -328,20 +349,20 @@ combineDataByHash = function() {
 		results.push(shortenedRecord);
 	});
 
-	shortRecords.forEach(function(record) {
-		var lengthenedRecord = [];
-		lengthenedRecord[0] = record[0];
-		lengthenedRecord[1] = {};
-		_.keys(record[0]).forEach(function(key){
-			if(Array.isArray(record[0][key])) {
-				lengthenedRecord[1][key] = [];
-			}
-			else {
-				lengthenedRecord[1][key] = '';
-			}
-		})
-		results.push(lengthenedRecord);
-	})
+//	shortRecords.forEach(function(record) {
+//		var lengthenedRecord = [];
+//		lengthenedRecord[0] = record[0];
+//		lengthenedRecord[1] = {};
+//		_.keys(record[0]).forEach(function(key){
+//			if(Array.isArray(record[0][key])) {
+//				lengthenedRecord[1][key] = [];
+//			}
+//			else {
+//				lengthenedRecord[1][key] = '';
+//			}
+//		})
+//		results.push(lengthenedRecord);
+//	})
 
 	logger.info('==========================================');
 	logger.info('Merging ' + results.length + ' records');
