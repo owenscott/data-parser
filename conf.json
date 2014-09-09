@@ -1,0 +1,8 @@
+{
+	"mongoHost": "localhost",
+	"mongoPort": "27017",
+	"oldDBs": ["contractqab1", "contractqab2"],
+	"newDB": "contractqab3",
+	"scrapedFieldsToPublish": ["URL", "ISSUER", "PUBLICATIONDATE", "PUBLISHEDIN", "DOCUMENTPURCHASEDEADLINE", "SUBMISSIONDEADLINE", "OPENINGDATE"]
+
+}
