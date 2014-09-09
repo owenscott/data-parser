@@ -1,3 +1,5 @@
+//necessary merge
+
 var fs = require('fs'),
 	_ = require('underscore'),
 	InsertParser = require('./sql-insert-to-json/app.js'),
