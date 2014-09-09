@@ -29,9 +29,9 @@ var mapKey = function(key) {
 		DATASOURCE: 'dataSource',
 		CONTRACTNUMBER: 'contractNumber',
 		CONTRACTTYPE: 'contractType'
-		// PROJECTNAME: 'projectName',
-		// PROJECTNUMBER: 'projectNumber',
-		// PROJECTFUNDER: 'projectFunder'
+		PROJECTNAME: 'projectName',
+		PROJECTNUMBER: 'projectNumber',
+		PROJECTFUNDER: 'projectFunder'
 	}
 
 	return mapping[key] || undefined;
