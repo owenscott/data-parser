@@ -11,7 +11,7 @@ var Parser = function (schema) {
 		
 		this._getTableName = function (statement) {
 			var insertSubStr = 'INSERT INTO '
-			return statement.substr(insertSubStr.length, statement.indexOf(' VALUES') - insertSubStr.length ).replace(/"/g, '');
+			return statement.substr(insertSubStr.length, statement.indexOf(' VALUES') - insertSubStr.length );
 		}
 
 		this._getValues = function(statement) {
@@ -20,11 +20,8 @@ var Parser = function (schema) {
 					insertLength,
 					resultArray;
 
-			console.log('-----------')
-			console.log(statement);
-
 			//TODO: anything unexpected here crashes everything b/c of the [0] array ref
-			insertLength = statement.match(/INSERT INTO (")?[a-zA-Z0-9]*(")? VALUES/)[0].length;
+			insertLength = statement.match(/INSERT INTO [a-zA-Z0-9]* VALUES/)[0].length;
 			valueString = statement.substr(insertLength + 1, statement.length - insertLength - 2);
 
 			//split by acceptable commas

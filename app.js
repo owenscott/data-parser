@@ -26,6 +26,9 @@ logger = new winston.Logger();
 
 logger.add(winston.transports.Console, {colorize:true})
 
+var codedHashes = JSON.parse(fs.readFileSync('./completed-batches/codedHashes-b1.json').toString());
+
+
 cleanNulls = function(arr) {
 	arr.forEach(function(obj) {
 		_.each(_.keys(obj), function(key) {
@@ -133,7 +136,12 @@ mapLocations = function(locations) {
 
 		}
 
+
+		
+
+
 	})
+	
 
 	result = _.uniq(result);
 
@@ -158,18 +166,8 @@ processFile = function(file, callback) {
 		else if (file.substr(0,2) === 'b3' || file.substr(0,2) === 'b4') {
 			VERSION = '0.2';
 		}
-		else if (file.substr(0,2) === 'a1') {
-			VERSION = 'awards'
-		}
 		else {
 			VERSION = '0.3';
-		}
-
-		if (process.argv[2] === 'awards' && VERSION !== 'awards') {
-			callback();
-		}
-		else if (VERSION === 'awards') {
-			callback();
 		}
 
 
@@ -186,13 +184,6 @@ processFile = function(file, callback) {
 				TENDERNOTICE: ['ID','TENDERNOTICENUMBER','STATUS','URL','CONTRACTDETAILS','ISSUER','PUBLICATIONDATE','PUBLISHEDIN','DOCUMENTPURCHASEDEADLINE','SUBMISSIONDEADLINE','OPENINGDATE','CONTRACTNAME','CONTRACTDESCRIPTION','COSTESTIMATE','ESTIMATECURRENCY','DATASOURCE','AGENCY','HASH','CODER1','CODER2'],
 				CODEDTENDERNOTICE: ['ID','TENDER_NOTICE_ID','CODER_ID','TENDERNOTICENUMBER','CONTRACTNUMBER','CONTRACTTYPE','PROJECTNAME','PROJECTNUMBER','PROJECTFUNDER','CONTRACTNAME','CONTRACTDESCRIPTION','COSTESTIMATE','ESTIMATECURRENCY','DATASOURCE','NOTES'],
 				CODEDLOCATION:  ['ID','CODED_TENDER_NOTICE_ID','ADM1','ADM2','ADM3','ADM4','WARD','OTHER_LOCATION','OTHER_LOCATION_DESC','ACTIVITY_DESC']
-			}
-		}
-		else if (VERSION === 'awards') {
-			schema = {
-				AWARD: ['ID', 'COST_ESTIMATE','ESTIMATE_CURRENCY', 'DATA_SOURCE', 'SCRAPED_SUPPLIER_NAME', 'SCRAPED_SUPPLIER_LOCATION', 'HASH', 'CODER1', 'CODER2', 'AWARD_AMOUNT', 'URL', 'TENDERNOTICENUMBER', 'CONTRACTNUMBER', 'ISSUER', 'DATE1', 'DATE2'],
-				CODEDAWARD: ['ID','AWARDID','TENDERNOTICENUMBER','CONTRACTNUMBER','COSTESTIMATE','COSTESTIMATECURRENCY','AWARDAMOUNT','AWARDAMOUNTCURRENCY'],
-				CODEDSUPPLIER: ['ID','AWARD_ID','CODER_ID','SUPPLIER_NAME','SUPPLIER_REGISTRATION_CODE','SUPPLIER_REGISTRATION_CODE_SOURCE','SUPPLIER_COUNTRY','ADM1','ADM2','ADM3','ADM4','WARD','OTHER_LOCATION','OTHER_LOCATION_DESC']
 			}
 		}
 		else {
@@ -220,75 +211,77 @@ processFile = function(file, callback) {
 		rawData = parser.parse(statements);
 
 
-		if (process.argv[2] !== 'awards') {
-				//raw data contains three tables which need to be split up
-				tenderNotices = rawData.TENDERNOTICE;
-				codedTenderNotices = rawData.CODEDTENDERNOTICE;
-				codedLocations = rawData.CODEDLOCATION;
+		//raw data contains three tables which need to be split up
+		tenderNotices = rawData.TENDERNOTICE;
+		codedTenderNotices = rawData.CODEDTENDERNOTICE;
+		codedLocations = rawData.CODEDLOCATION;
 
-				cleanNulls(tenderNotices);
-				cleanNulls(codedTenderNotices);
-				cleanNulls(codedLocations);
+		cleanNulls(tenderNotices);
+		cleanNulls(codedTenderNotices);
+		cleanNulls(codedLocations);
 
-				//only needs to be done because I stupidly left this out of the first version of the schema
-				assignCoderName = function (record) {
-					// console.log(file.substr(3, file.length - 7));
-					record['coder'] = ''; //TODO: implement this based on file name
-				}
+		//only needs to be done because I stupidly left this out of the first version of the schema
+		assignCoderName = function (record) {
+			// console.log(file.substr(3, file.length - 7));
+			record['coder'] = ''; //TODO: implement this based on file name
+		}
 
-				codedTenderNotices.map (assignCoderName);
-				codedLocations.map(assignCoderName);
+		codedTenderNotices.map (assignCoderName);
+		codedLocations.map(assignCoderName);
 
-				tenderNotices.forEach( function (tenderNotice) {
+		tenderNotices.forEach( function (tenderNotice) {
 
-					var hash = '';
+			var hash = '';
 
-					//resultObj is the result of the merging of all three data sets
-					resultObj = {};
-					resultObj.scraped = _.clone(tenderNotice);
+			//resultObj is the result of the merging of all three data sets
+			resultObj = {};
+			resultObj.scraped = _.clone(tenderNotice);
 
-					//create hash
-					if (!resultObj.scraped.hash) {
-						_.each(resultObj.scraped, function(i) {
-							hash = hash + i;
-						})
-						resultObj.scraped.hash = hash;
-					}
-
-					resultObj.coded = _.findWhere(codedTenderNotices, {TENDER_NOTICE_ID: resultObj.scraped.ID});
-					if (resultObj.coded) {
-						resultObj.locations = _.where(codedLocations, {CODED_TENDER_NOTICE_ID: resultObj.coded.ID});
-					}
-					else {
-						logger.warn('No coded data for ' + coderName + ' record ' + resultObj.scraped.ID);
-					}
-					
-					//sanity check
-					if (_.where(codedTenderNotices, {TENDER_NOTICE_ID: resultObj.scraped.ID}).length > 1 ) {
-						logger.warn ('Multiple coded matches for ' + coderName + ' record ' + resultObj.scraped.ID);
-					}
-
-					//process locations
-					if (resultObj.locations) {
-						resultObj.locations = mapLocations(resultObj.locations);
-					}
-
-					//add resultObject to output if it hasn't been coded already in another batch
-					results.push(resultObj);				
-
+			//create hash
+			if (!resultObj.scraped.hash) {
+				_.each(resultObj.scraped, function(i) {
+					hash = hash + i;
 				})
+				resultObj.scraped.hash = hash;
+			}
 
-				jsonData = jsonData.concat(results);
+			resultObj.coded = _.findWhere(codedTenderNotices, {TENDER_NOTICE_ID: resultObj.scraped.ID});
+			if (resultObj.coded) {
+				resultObj.locations = _.where(codedLocations, {CODED_TENDER_NOTICE_ID: resultObj.coded.ID});
+			}
+			else {
+				logger.warn('No coded data for ' + coderName + ' record ' + resultObj.scraped.ID);
+			}
+			
+			//sanity check
+			if (_.where(codedTenderNotices, {TENDER_NOTICE_ID: resultObj.scraped.ID}).length > 1 ) {
+				logger.warn ('Multiple coded matches for ' + coderName + ' record ' + resultObj.scraped.ID);
+			}
 
-				callback();
+			//process locations
+			if (resultObj.locations) {
+				resultObj.locations = mapLocations(resultObj.locations);
+			}
 
-		}
-		else {
-			//do something	
-		}
-	})
+			//add resultObject to output if it hasn't been coded already in another batch
+			if (!_.contains(codedHashes, resultObj.scraped.hash)) {
+				results.push(resultObj);				
+			}
+
+
+
+		})
+
+		jsonData = jsonData.concat(results);
+
+		callback();
+
+	});
 }
 
+writeFile = function(data) {
+
+}
 
 combineDataByHash = function() {
 
