@@ -28,6 +28,8 @@ logger.add(winston.transports.Console, {colorize:true})
 
 var codedHashes = JSON.parse(fs.readFileSync('./completed-batches/codedHashes-b1.json').toString());
 
+var conf = JSON.parse(fs.readFileSync('./conf.json').toString());
+
 
 cleanNulls = function(arr) {
 	arr.forEach(function(obj) {
@@ -153,130 +155,142 @@ mapLocations = function(locations) {
 //callback for file processing
 processFile = function(file, callback) {
 
-	var coderName = file.substr(3,file.indexOf('.sql') - 3);
+	if (file.substr(0,2) !== 'a1') {
+		var coderName = file.substr(3,file.indexOf('.sql') - 3);
 
-	fs.readFile( DATA_DIR + '/' + file, function (err, data) {
-
-
-		//TODO: version handling not through a (non)constant and make it more strucutred in the file name
-
-		if (file.substr(0,2) === 'b1' || file.substr(0,2) === 'b2' ) {
-			VERSION = '0.1';
-		}
-		else if (file.substr(0,2) === 'b3' || file.substr(0,2) === 'b4') {
-			VERSION = '0.2';
-		}
-		else {
-			VERSION = '0.3';
-		}
+		fs.readFile( DATA_DIR + '/' + file, function (err, data) {
 
 
-		//set schema
-		if( VERSION === '0.1') {
-			schema = {
-				TENDERNOTICE: ['ID','TENDERNOTICENUMBER','STATUS','URL','CONTRACTDETAILS','ISSUER','PUBLICATIONDATE','PUBLISHEDIN','DOCUMENTPURCHASEDEADLINE','SUBMISSIONDEADLINE','OPENINGDATE','CONTRACTNAME','CONTRACTDESCRIPTION','COSTESTIMATE','ESTIMATECURRENCY','DATASOURCE'],
-				CODEDTENDERNOTICE: ['ID','TENDER_NOTICE_ID','CODER_ID','TENDERNOTICENUMBER','CONTRACTNUMBER','CONTRACTTYPE','PROJECTNAME','PROJECTNUMBER','PROJECTFUNDER','CONTRACTNAME','CONTRACTDESCRIPTION','COSTESTIMATE','ESTIMATECURRENCY','DATASOURCE'],
-				CODEDLOCATION: ['ID','CODED_TENDER_NOTICE_ID','ADM1','ADM2','ADM3','ADM4','WARD','OTHER_LOCATION','OTHER_LOCATION_DESC','ACTIVITY_DESC']
+			//TODO: version handling not through a (non)constant and make it more strucutred in the file name
+
+			if (file.substr(0,2) === 'b1' || file.substr(0,2) === 'b2' ) {
+				VERSION = '0.1';
 			}
-		}
-		else if ( VERSION === '0.2') {
-			schema = {
-				TENDERNOTICE: ['ID','TENDERNOTICENUMBER','STATUS','URL','CONTRACTDETAILS','ISSUER','PUBLICATIONDATE','PUBLISHEDIN','DOCUMENTPURCHASEDEADLINE','SUBMISSIONDEADLINE','OPENINGDATE','CONTRACTNAME','CONTRACTDESCRIPTION','COSTESTIMATE','ESTIMATECURRENCY','DATASOURCE','AGENCY','HASH','CODER1','CODER2'],
-				CODEDTENDERNOTICE: ['ID','TENDER_NOTICE_ID','CODER_ID','TENDERNOTICENUMBER','CONTRACTNUMBER','CONTRACTTYPE','PROJECTNAME','PROJECTNUMBER','PROJECTFUNDER','CONTRACTNAME','CONTRACTDESCRIPTION','COSTESTIMATE','ESTIMATECURRENCY','DATASOURCE','NOTES'],
-				CODEDLOCATION:  ['ID','CODED_TENDER_NOTICE_ID','ADM1','ADM2','ADM3','ADM4','WARD','OTHER_LOCATION','OTHER_LOCATION_DESC','ACTIVITY_DESC']
-			}
-		}
-		else {
-			schema = {
-				TENDERNOTICE: ['ID','TENDERNOTICENUMBER','STATUS','URL','CONTRACTDETAILS','ISSUER','PUBLICATIONDATE','PUBLISHEDIN','DOCUMENTPURCHASEDEADLINE','SUBMISSIONDEADLINE','OPENINGDATE','CONTRACTNAME','CONTRACTDESCRIPTION','COSTESTIMATE','ESTIMATECURRENCY','DATASOURCE','AGENCY','HASH','CODER1','CODER2'],
-				CODEDTENDERNOTICE: ['ID', 'TENDER_NOTICE_ID', 'CODER_ID', 'TENDERNOTICENUMBER', 'CONTRACTNUMBER', 'GOODS', 'SERVICES', 'CONSTRUCTION', 'MAINTENANCE', 'PROJECTNAME', 'PROJECTNUMBER', 'PROJECTFUNDER', 'CONTRACTNAME', 'CONTRACTDESCRIPTION', 'COSTESTIMATE', 'ESTIMATECURRENCY', 'DATASOURCE', 'NOTES'],
-				CODEDLOCATION:  ['ID','CODED_TENDER_NOTICE_ID','ADM1','ADM2','ADM3','ADM4','WARD','OTHER_LOCATION','OTHER_LOCATION_DESC','ACTIVITY_DESC']
-			}
-		}
-		
-		if(err) {throw err};
-
-		var statements = data.toString().split('\n'),
-			parser = new InsertParser(schema),
-			rawData,
-			tenderNotices,
-			codedTenderNotices,
-			codedLocations,
-			results = [],
-			resultObj,
-			assignCoderName,
-			coder = coderName;
-
-		logger.info('starting ' + file);
-		rawData = parser.parse(statements);
-
-
-		//raw data contains three tables which need to be split up
-		tenderNotices = rawData.TENDERNOTICE;
-		codedTenderNotices = rawData.CODEDTENDERNOTICE;
-		codedLocations = rawData.CODEDLOCATION;
-
-		cleanNulls(tenderNotices);
-		cleanNulls(codedTenderNotices);
-		cleanNulls(codedLocations);
-
-		//only needs to be done because I stupidly left this out of the first version of the schema
-		assignCoderName = function (record) {
-			// console.log(file.substr(3, file.length - 7));
-			record['coder'] = ''; //TODO: implement this based on file name
-		}
-
-		codedTenderNotices.map (assignCoderName);
-		codedLocations.map(assignCoderName);
-
-		tenderNotices.forEach( function (tenderNotice) {
-
-			var hash = '';
-
-			//resultObj is the result of the merging of all three data sets
-			resultObj = {};
-			resultObj.scraped = _.clone(tenderNotice);
-
-			//create hash
-			if (!resultObj.scraped.hash) {
-				_.each(resultObj.scraped, function(i) {
-					hash = hash + i;
-				})
-				resultObj.scraped.hash = hash;
+			else if (file.substr(0,2) === 'b3' || file.substr(0,2) === 'b4') {
+				VERSION = '0.2';
 			}
 
-			resultObj.coded = _.findWhere(codedTenderNotices, {TENDER_NOTICE_ID: resultObj.scraped.ID});
-			if (resultObj.coded) {
-				resultObj.locations = _.where(codedLocations, {CODED_TENDER_NOTICE_ID: resultObj.coded.ID});
+			else {
+				VERSION = '0.3';
+			}
+
+			
+
+
+
+			//set schema
+			if( VERSION === '0.1') {
+				schema = {
+					TENDERNOTICE: ['ID','TENDERNOTICENUMBER','STATUS','URL','CONTRACTDETAILS','ISSUER','PUBLICATIONDATE','PUBLISHEDIN','DOCUMENTPURCHASEDEADLINE','SUBMISSIONDEADLINE','OPENINGDATE','CONTRACTNAME','CONTRACTDESCRIPTION','COSTESTIMATE','ESTIMATECURRENCY','DATASOURCE'],
+					CODEDTENDERNOTICE: ['ID','TENDER_NOTICE_ID','CODER_ID','TENDERNOTICENUMBER','CONTRACTNUMBER','CONTRACTTYPE','PROJECTNAME','PROJECTNUMBER','PROJECTFUNDER','CONTRACTNAME','CONTRACTDESCRIPTION','COSTESTIMATE','ESTIMATECURRENCY','DATASOURCE'],
+					CODEDLOCATION: ['ID','CODED_TENDER_NOTICE_ID','ADM1','ADM2','ADM3','ADM4','WARD','OTHER_LOCATION','OTHER_LOCATION_DESC','ACTIVITY_DESC']
+				}
+			}
+			else if ( VERSION === '0.2') {
+				schema = {
+					TENDERNOTICE: ['ID','TENDERNOTICENUMBER','STATUS','URL','CONTRACTDETAILS','ISSUER','PUBLICATIONDATE','PUBLISHEDIN','DOCUMENTPURCHASEDEADLINE','SUBMISSIONDEADLINE','OPENINGDATE','CONTRACTNAME','CONTRACTDESCRIPTION','COSTESTIMATE','ESTIMATECURRENCY','DATASOURCE','AGENCY','HASH','CODER1','CODER2'],
+					CODEDTENDERNOTICE: ['ID','TENDER_NOTICE_ID','CODER_ID','TENDERNOTICENUMBER','CONTRACTNUMBER','CONTRACTTYPE','PROJECTNAME','PROJECTNUMBER','PROJECTFUNDER','CONTRACTNAME','CONTRACTDESCRIPTION','COSTESTIMATE','ESTIMATECURRENCY','DATASOURCE','NOTES'],
+					CODEDLOCATION:  ['ID','CODED_TENDER_NOTICE_ID','ADM1','ADM2','ADM3','ADM4','WARD','OTHER_LOCATION','OTHER_LOCATION_DESC','ACTIVITY_DESC']
+				}
 			}
 			else {
-				logger.warn('No coded data for ' + coderName + ' record ' + resultObj.scraped.ID);
+				schema = {
+					TENDERNOTICE: ['ID','TENDERNOTICENUMBER','STATUS','URL','CONTRACTDETAILS','ISSUER','PUBLICATIONDATE','PUBLISHEDIN','DOCUMENTPURCHASEDEADLINE','SUBMISSIONDEADLINE','OPENINGDATE','CONTRACTNAME','CONTRACTDESCRIPTION','COSTESTIMATE','ESTIMATECURRENCY','DATASOURCE','AGENCY','HASH','CODER1','CODER2'],
+					CODEDTENDERNOTICE: ['ID', 'TENDER_NOTICE_ID', 'CODER_ID', 'TENDERNOTICENUMBER', 'CONTRACTNUMBER', 'GOODS', 'SERVICES', 'CONSTRUCTION', 'MAINTENANCE', 'PROJECTNAME', 'PROJECTNUMBER', 'PROJECTFUNDER', 'CONTRACTNAME', 'CONTRACTDESCRIPTION', 'COSTESTIMATE', 'ESTIMATECURRENCY', 'DATASOURCE', 'NOTES'],
+					CODEDLOCATION:  ['ID','CODED_TENDER_NOTICE_ID','ADM1','ADM2','ADM3','ADM4','WARD','OTHER_LOCATION','OTHER_LOCATION_DESC','ACTIVITY_DESC']
+				}
 			}
 			
-			//sanity check
-			if (_.where(codedTenderNotices, {TENDER_NOTICE_ID: resultObj.scraped.ID}).length > 1 ) {
-				logger.warn ('Multiple coded matches for ' + coderName + ' record ' + resultObj.scraped.ID);
+			if(err) {throw err};
+
+			var statements = data.toString().split('\n'),
+				parser = new InsertParser(schema),
+				rawData,
+				tenderNotices,
+				codedTenderNotices,
+				codedLocations,
+				results = [],
+				resultObj,
+				assignCoderName,
+				coder = coderName;
+
+			logger.info('starting ' + file);
+			rawData = parser.parse(statements);
+
+
+			//raw data contains three tables which need to be split up
+			tenderNotices = rawData.TENDERNOTICE;
+			codedTenderNotices = rawData.CODEDTENDERNOTICE;
+			codedLocations = rawData.CODEDLOCATION;
+
+			cleanNulls(tenderNotices);
+			cleanNulls(codedTenderNotices);
+			cleanNulls(codedLocations);
+
+			//only needs to be done because I stupidly left this out of the first version of the schema
+			assignCoderName = function (record) {
+				// console.log(file.substr(3, file.length - 7));
+				record['coder'] = ''; //TODO: implement this based on file name
 			}
 
-			//process locations
-			if (resultObj.locations) {
-				resultObj.locations = mapLocations(resultObj.locations);
-			}
+			codedTenderNotices.map (assignCoderName);
+			codedLocations.map(assignCoderName);
 
-			//add resultObject to output if it hasn't been coded already in another batch
-			if (!_.contains(codedHashes, resultObj.scraped.hash)) {
-				results.push(resultObj);				
-			}
+			tenderNotices.forEach( function (tenderNotice) {
+
+				var hash = '';
+
+				//resultObj is the result of the merging of all three data sets
+				resultObj = {};
+				resultObj.scraped = _.clone(tenderNotice);
+
+				//create hash
+				if (!resultObj.scraped.hash) {
+					_.each(resultObj.scraped, function(i) {
+						hash = hash + i;
+					})
+					resultObj.scraped.hash = hash;
+				}
+
+				resultObj.coded = _.findWhere(codedTenderNotices, {TENDER_NOTICE_ID: resultObj.scraped.ID});
+				if (resultObj.coded) {
+					resultObj.locations = _.where(codedLocations, {CODED_TENDER_NOTICE_ID: resultObj.coded.ID});
+				}
+				else {
+					logger.warn('No coded data for ' + coderName + ' record ' + resultObj.scraped.ID);
+				}
+				
+				//sanity check
+				if (_.where(codedTenderNotices, {TENDER_NOTICE_ID: resultObj.scraped.ID}).length > 1 ) {
+					logger.warn ('Multiple coded matches for ' + coderName + ' record ' + resultObj.scraped.ID);
+				}
+
+				//process locations
+				if (resultObj.locations) {
+					resultObj.locations = mapLocations(resultObj.locations);
+				}
+
+				//add resultObject to output if it hasn't been coded already in another batch
+				if (!_.contains(codedHashes, resultObj.scraped.hash)) {
+					results.push(resultObj);				
+				}
 
 
 
-		})
+			})
 
-		jsonData = jsonData.concat(results);
+			jsonData = jsonData.concat(results);
 
+			callback();
+
+		});
+	}
+	else {
+		//awards
 		callback();
+	}
 
-	});
+
 }
 
 writeFile = function(data) {
@@ -351,20 +365,24 @@ combineDataByHash = function() {
 		results.push(shortenedRecord);
 	});
 
-//	shortRecords.forEach(function(record) {
-//		var lengthenedRecord = [];
-//		lengthenedRecord[0] = record[0];
-//		lengthenedRecord[1] = {};
-//		_.keys(record[0]).forEach(function(key){
-//			if(Array.isArray(record[0][key])) {
-//				lengthenedRecord[1][key] = [];
-//			}
-//			else {
-//				lengthenedRecord[1][key] = '';
-//			}
-//		})
-//		results.push(lengthenedRecord);
-//	})
+	if (conf.includeShortRecords === true) {
+		shortRecords.forEach(function(record) {
+			var lengthenedRecord = [];
+			lengthenedRecord[0] = record[0];
+			lengthenedRecord[1] = {};
+			_.keys(record[0]).forEach(function(key){
+				if(Array.isArray(record[0][key])) {
+					lengthenedRecord[1][key] = [];
+				}
+				else {
+					lengthenedRecord[1][key] = '';
+				}
+			})
+			results.push(lengthenedRecord);
+		})
+	}
+
+
 
 	logger.info('==========================================');
 	logger.info('Merging ' + results.length + ' records');
