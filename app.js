@@ -26,7 +26,7 @@ logger = new winston.Logger();
 
 logger.add(winston.transports.Console, {colorize:true})
 
-var codedHashes = JSON.parse(fs.readFileSync('./completed-batches/codedHashes-b1.json').toString());
+// var codedHashes = JSON.parse(fs.readFileSync('./completed-batches/codedHashes-b1.json').toString());
 
 var conf = JSON.parse(fs.readFileSync('./conf.json').toString());
 
@@ -271,9 +271,9 @@ processFile = function(file, callback) {
 				}
 
 				//add resultObject to output if it hasn't been coded already in another batch
-				if (!_.contains(codedHashes, resultObj.scraped.hash)) {
-					results.push(resultObj);				
-				}
+				// if (!_.contains(codedHashes, resultObj.scraped.hash)) {
+				results.push(resultObj);				
+				// }
 
 
 

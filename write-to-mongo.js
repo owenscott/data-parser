@@ -5,7 +5,7 @@ var mongoClient = require('mongodb').MongoClient,
 	_ = require('underscore');
 
 var PREVIOUS_DBS = ['contractqab1', 'contractqab2'];
-var OUTPUT_DB = 'contractqab3';
+var OUTPUT_DB = 'contractteststtt';
 
 var completedContractHashes = [];
 
