@@ -7,7 +7,10 @@ var fs = require('fs'),
 	async = require('async'),
 	_ = require('underscore'),
 	winston = require('winston'),
-	path = require('path');
+	path = require('path'),
+	jsonMerge = require('json-premerge'),
+	mongoClient = require('mongodb'),
+	csvParse = require('csv-parse');
 
 //src
 var getFileInfo = require('./src/getFileInfo'),
@@ -31,6 +34,11 @@ var parser = new InsertParser(awardsSchema);
 var outputData = [];
 
 
+function getTableName(statement) {
+	var insertSubStr = 'INSERT INTO '
+	return statement.substr(insertSubStr.length, statement.indexOf(' VALUES') - insertSubStr.length ).replace(/"/g, '');
+}
+
 //============================================
 //||   MAIN FUNCTION FOR FILE PROCESSING    ||
 //============================================
@@ -39,6 +47,7 @@ var processFile = function(file, callback) {
 	
 	var fileInfo = getFileInfo(file),
 		rawData,
+		parsedData = {},
 		scrapedAwards,
 		codedAwards,
 		codedSuppliers;
@@ -47,55 +56,92 @@ var processFile = function(file, callback) {
 	//PROCESS FILE
 	if (_.contains(conf.awardVersions, fileInfo.version)) {
 		
+		//convert raw data :(
 		logger.info('Starting file', file, '\n<=========================================================>')
-		rawData = parser.parse(fs.readFileSync(path.join(conf.dataDir, file)).toString().split('\n')); 
-		
-		scrapedAwards = rawData.AWARD;
-		codedAwards = rawData.CODEDAWARD;
-		codedSuppliers = rawData.CODEDSUPPLIER;
+		// rawData = parser.parse(fs.readFileSync(path.join(conf.dataDir, file)).toString().split('\n'));
+		rawData = fs.readFileSync(path.join(conf.dataDir, file), 'utf8').toString();
+		rawData = rawData.split('\n');
+
+		async.each(rawData,
+		function(row, callback)  {
+			var insertLength = row.match(/INSERT INTO (")?[a-zA-Z0-9]*(")? VALUES/)[0].length;
+			var tableName = getTableName(row);
+			var valueString = row.substr(insertLength + 1, row.length - insertLength - 2);
+			csvParse(valueString, {quote:'\''}, function(err, data) {
+				var tempObj = {};
+				parsedData[tableName] = parsedData[tableName] || [];
+
+				awardsSchema[tableName].forEach(function(key, i) {
+					tempObj[key] = data[0][i]
+				})
+
+				//hacky sanity check
+				var expectedLengths = {
+					'CODEDAWARD': 8,
+					'CODEDSUPPLIER': 14,
+					'AWARD': 16
+				}
+
+				if (data[0].length !== expectedLengths[tableName]) {
+					logger.error('A record has the wrong length');
+					throw new Error();
+				}
+
+				parsedData[tableName].push(tempObj);
+				callback();
+			})
+		},
+		function(){
+			
 
 
-		cleanNulls(scrapedAwards);
-		cleanNulls(codedAwards);
-		cleanNulls(codedSuppliers);
+			scrapedAwards = parsedData.AWARD;
+			codedAwards = parsedData.CODEDAWARD;
+			codedSuppliers = parsedData.CODEDSUPPLIER;
 
 
-		scrapedAwards.forEach(function(award) {
 
-			var tempAward = {};
+			cleanNulls(scrapedAwards);
+			cleanNulls(codedAwards);
+			cleanNulls(codedSuppliers);
 
-			//create hash
-			tempAward.hash = createHash(award);
+			scrapedAwards.forEach(function(award) {
 
-			//add scraped data to record
-			tempAward.scraped = award;
+				var tempAward = {};
 
-			//add coded award data to record
-			tempAward.codedAward = _.findWhere(codedAwards, {AWARDID: tempAward.scraped.ID});
+				//create hash
+				tempAward.hash = createHash(award);
 
-			//add coded supplier data to record and sanity check on coded dat
-			tempAward.suppliers = _.where(codedSuppliers, {AWARD_ID: tempAward.codedAward.ID})
+				//add scraped data to record
+				tempAward.scraped = award;
 
-			//sanity checks
-			if (!tempAward.codedAward) {
-				logger.warn('No coded award data for', fileInfo.coder, 'record', tempAward.scraped.ID)
-			}
-			if (!tempAward.suppliers || _.isEmpty(tempAward.suppliers)) {
-				logger.warn('No coded supplier data for', fileInfo.coder, 'record', tempAward.scraped.ID)
-			}
+				//add coded award data to record
+				tempAward.codedAward = _.findWhere(codedAwards, {AWARDID: tempAward.scraped.ID});
 
-			//create hashes for supplier matching
-			tempAward.suppliers.forEach(function(supplier) {
-				supplier.hash = createSupplierHash(supplier)
+				//add coded supplier data to record and sanity check on coded dat
+				tempAward.suppliers = _.where(codedSuppliers, {AWARD_ID: tempAward.codedAward.ID})
+
+				//sanity checks
+				if (!tempAward.codedAward) {
+					logger.warn('No coded award data for', fileInfo.coder, 'record', tempAward.scraped.ID)
+				}
+				if (!tempAward.suppliers || _.isEmpty(tempAward.suppliers)) {
+					logger.warn('No coded supplier data for', fileInfo.coder, 'record', tempAward.scraped.ID)
+				}
+
+				//create hashes for supplier matching
+				tempAward.suppliers.forEach(function(supplier) {
+					supplier.hash = createSupplierHash(supplier)
+				})
+
+				outputData.push(_.clone(tempAward));
+
 			})
 
-			outputData.push(_.clone(tempAward));
+			logger.info('Done file', '\n</=======================================================>')
+			callback();
 
 		})
-
-		logger.info('Done file', '\n</=======================================================>')
-		callback();
-
 
 	}
 
@@ -115,6 +161,7 @@ var processFile = function(file, callback) {
 
 var combineDataByHash = function() {
 
+
 	var combinedData = {},
 		goodRecords = [],
 		shortRecords = [],
@@ -123,7 +170,6 @@ var combineDataByHash = function() {
 		results = [],
 		mergedResults = [];
 
-	logger.info('==========================================');
 	logger.info('==========================================');
 	logger.info('==========================================');
 
@@ -136,10 +182,10 @@ var combineDataByHash = function() {
 
 		//clean up record a little bit
 		if (record.codedAward || record.suppliers) {
-			cleanRecord = _.clone(record.coded) || {};
+			cleanRecord = _.clone(record.codedAward) || {};
 			cleanRecord.scraped = record.scraped || {};
 			cleanRecord.hash = recordId;
-			cleanRecord.locations = _.clone(record.locations) || [];
+			cleanRecord.suppliers = _.clone(record.suppliers) || [];
 
 			//push into results array
 			combinedData[recordId] = combinedData[recordId] || [];
@@ -147,6 +193,7 @@ var combineDataByHash = function() {
 		}
 
 	})
+
 
 	//look for records with the right length
 	_.keys(combinedData).forEach(function(hash) {
@@ -172,6 +219,83 @@ var combineDataByHash = function() {
 
 	logger.info('==========================================');
 	logger.info('Putting data into correct merge format');
+
+	//add good records
+	results = results.concat(goodRecords);
+
+	//add long records
+	longRecords.forEach(function(record) {
+		var shortenedRecord = [record[0], record[1]];
+		results.push(shortenedRecord);
+	});
+
+	//add short records if enabled
+	if (conf.includeShortRecords === true) {
+		logger.warn('User has enabled the inclusion of short records (with only one coder)')
+		shortRecords.forEach(function(record) {
+			var lengthenedRecord = [];
+			lengthenedRecord[0] = record[0];
+			lengthenedRecord[1] = {};
+			_.keys(record[0]).forEach(function(key){
+				if(Array.isArray(record[0][key])) {
+					lengthenedRecord[1][key] = [];
+				}
+				else {
+					lengthenedRecord[1][key] = '';
+				}
+			})
+			results.push(lengthenedRecord);
+		})
+	}
+
+	logger.info(results.length + ' records are ready to be merged');
+
+	//MERGE FINAL RECORDS
+	async.each(results,
+	function(result, callback) {
+
+		//save scraped data as separate object
+		var scraped = _.clone(result[0].scraped);
+
+		var recordId = result[0].hash;
+
+		// remove scraped data from each array member
+		result = _.map(result, function(r) {
+			return _.clone(_.omit(r, 'scraped'));
+		})
+
+
+		//merge JSON
+		jsonMerge(result, function(err, data) {
+			var temp = {};
+
+			temp.data = _.clone(data);
+			
+			temp.meta = {
+				status: 'open',
+				workLog: [],
+				id: recordId
+			};
+			
+			temp.scraped = scraped;
+
+			mergedResults.push(temp);
+
+			process.exit();
+
+			callback();
+
+		});
+		
+
+
+	},
+
+	//WRITE FINAL RECORDS TO MONGO
+	function(err) {
+		logger.info(mergedResults.length + ' records will be written into the final dataset.');
+		//TODO: need to make sure aren't previously coded
+	});
 
 }
 

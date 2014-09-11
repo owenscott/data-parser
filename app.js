@@ -365,22 +365,22 @@ combineDataByHash = function() {
 		results.push(shortenedRecord);
 	});
 
-	if (conf.includeShortRecords === true) {
-		shortRecords.forEach(function(record) {
-			var lengthenedRecord = [];
-			lengthenedRecord[0] = record[0];
-			lengthenedRecord[1] = {};
-			_.keys(record[0]).forEach(function(key){
-				if(Array.isArray(record[0][key])) {
-					lengthenedRecord[1][key] = [];
-				}
-				else {
-					lengthenedRecord[1][key] = '';
-				}
-			})
-			results.push(lengthenedRecord);
-		})
-	}
+	// if (conf.includeShortRecords === true) {
+	// 	shortRecords.forEach(function(record) {
+	// 		var lengthenedRecord = [];
+	// 		lengthenedRecord[0] = record[0];
+	// 		lengthenedRecord[1] = {};
+	// 		_.keys(record[0]).forEach(function(key){
+	// 			if(Array.isArray(record[0][key])) {
+	// 				lengthenedRecord[1][key] = [];
+	// 			}
+	// 			else {
+	// 				lengthenedRecord[1][key] = '';
+	// 			}
+	// 		})
+	// 		results.push(lengthenedRecord);
+	// 	})
+	// }
 
 
 

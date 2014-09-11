@@ -1,4 +1,7 @@
 {
 	"dataDir" : "./data",
-	"awardVersions": ["a1"]
+	"awardVersions": ["a1"],
+	"includeShortRecords": true,
+	"awardCodedDBs": [],
+	"awardCurrentDB": "awardqab1"
 }

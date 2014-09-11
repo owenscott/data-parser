@@ -6,7 +6,7 @@
   "dependencies": {
     "async": "^0.9.0",
     "csv-generate": "^0.0.4",
-    "csv-parse": "^0.0.5",
+    "csv-parse": "0.0.5",
     "csv-stringify": "^0.0.3",
     "json-premerge": "^0.0.6",
     "mongodb": "^1.4.7",
