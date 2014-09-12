@@ -17,7 +17,8 @@ var getFileInfo = require('./src/getFileInfo'),
 	cleanNulls = require('./src/cleanNulls'),
 	InsertParser = require('./sql-insert-to-json/app'),
 	createHash = require('./src/createMD5'),
-	createSupplierHash = require('./src/createSupplierHash');
+	createSupplierHash = require('./src/createSupplierHash'),
+	writeToMongo = require('./src/writeToMongo');
 
 //conf
 var conf = JSON.parse(fs.readFileSync('./conf.json').toString()),
@@ -60,6 +61,8 @@ var processFile = function(file, callback) {
 		logger.info('Starting file', file, '\n<=========================================================>')
 		// rawData = parser.parse(fs.readFileSync(path.join(conf.dataDir, file)).toString().split('\n'));
 		rawData = fs.readFileSync(path.join(conf.dataDir, file), 'utf8').toString();
+		rawData = rawData.replace(/"CONSTRUCTION OF RAPTI KHOLA BRIDGE"/g, 'CONSTRUCTION OF RAPTI KHOLA BRIDGE')
+
 		rawData = rawData.split('\n');
 
 		async.each(rawData,
@@ -68,6 +71,11 @@ var processFile = function(file, callback) {
 			var tableName = getTableName(row);
 			var valueString = row.substr(insertLength + 1, row.length - insertLength - 2);
 			csvParse(valueString, {quote:'\''}, function(err, data) {
+				if(err) {
+					console.log(file);
+					console.log(valueString);
+					throw new Error(err);					
+				}
 				var tempObj = {};
 				parsedData[tableName] = parsedData[tableName] || [];
 
@@ -281,8 +289,6 @@ var combineDataByHash = function() {
 
 			mergedResults.push(temp);
 
-			process.exit();
-
 			callback();
 
 		});
@@ -293,8 +299,11 @@ var combineDataByHash = function() {
 
 	//WRITE FINAL RECORDS TO MONGO
 	function(err) {
+		console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
+
 		logger.info(mergedResults.length + ' records will be written into the final dataset.');
 		//TODO: need to make sure aren't previously coded
+		writeToMongo(mergedResults, logger);
 	});
 
 }
@@ -305,5 +314,5 @@ var combineDataByHash = function() {
 //============================================
 
 fs.readdir(conf.dataDir, function(err, files) {
-	async.each(files, processFile, combineDataByHash);
+	async.eachSeries(files, processFile, combineDataByHash);
 });

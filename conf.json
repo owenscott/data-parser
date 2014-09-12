@@ -1,7 +1,9 @@
 {
 	"dataDir" : "./data",
-	"awardVersions": ["a1"],
-	"includeShortRecords": true,
+	"awardVersions": ["a1","a2"],
+	"includeShortRecords": false,
 	"awardCodedDBs": [],
-	"awardCurrentDB": "awardqab1"
+	"awardCurrentDB": "awardqab1",
+	"mongoHost": "localhost",
+	"mongoPort": "27017"
 }
