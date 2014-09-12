@@ -28,6 +28,8 @@ logger.add(winston.transports.Console, {colorize:true})
 
 var codedHashes = JSON.parse(fs.readFileSync('./completed-batches/codedHashes-b1.json').toString());
 
+var dump = fs.createWriteStream('./foo.txt');
+
 
 cleanNulls = function(arr) {
 	arr.forEach(function(obj) {
@@ -222,7 +224,7 @@ processFile = function(file, callback) {
 
 		//only needs to be done because I stupidly left this out of the first version of the schema
 		assignCoderName = function (record) {
-			// console.log(file.substr(3, file.length - 7));
+			
 			record['coder'] = ''; //TODO: implement this based on file name
 		}
 
@@ -269,10 +271,14 @@ processFile = function(file, callback) {
 			}
 
 
+			var cname = file.substr(3, file.length - 7);
+			dump.write(resultObj.scraped.URL + ',' + file.substr(0,2) + ',' + cname + '\n');
+
 
 		})
 
 		jsonData = jsonData.concat(results);
+
 
 		callback();
 
@@ -366,6 +372,11 @@ combineDataByHash = function() {
 //		results.push(lengthenedRecord);
 //	})
 
+
+	// shortRecords.forEach(function(record){ 
+	// 	console.log(record[0].scraped.URL);
+	// })
+
 	logger.info('==========================================');
 	logger.info('Merging ' + results.length + ' records');
 
@@ -412,3 +423,35 @@ logger.info('Processing data files...');
 fs.readdir(DATA_DIR, function(err, files) {
 	async.each(files, processFile, combineDataByHash);
 });
+
+
+
+/* EFore b9-uttam.sql 
+
+info: Done processing data files. 6708 records found.
+warn: 2563 hashes found with only one record.
+warn: 1 hashes found with too many records.
+info: 1945 hashes found that look good
+info: ==========================================
+info: Putting data into correct merge format
+info: ==========================================
+info: Merging 1946 records
+info: 1946 merged records created
+
+
+after:
+
+nfo: Done processing data files. 6982 records found.
+warn: 2612 hashes found with only one record.
+warn: 1 hashes found with too many records.
+info: 1945 hashes found that look good
+info: ==========================================
+info: Putting data into correct merge format
+info: ==========================================
+info: Merging 1946 records
+info: 1946 merged records created
+info: Data written to file.
+
+*/
+
+
