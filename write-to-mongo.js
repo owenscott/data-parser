@@ -4,8 +4,12 @@ var mongoClient = require('mongodb').MongoClient,
 	async = require('async'),
 	_ = require('underscore');
 
-var PREVIOUS_DBS = ['contractqab1', 'contractqab2'];
-var OUTPUT_DB = 'contractqab3';
+
+
+var conf = JSON.parse(fs.readFileSync('./conf.json').toString());
+
+var PREVIOUS_DBS = conf.previousContractDBs;
+var OUTPUT_DB = conf.currentContractDB;
 
 var completedContractHashes = [];
 
