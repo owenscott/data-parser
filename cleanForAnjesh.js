@@ -49,6 +49,10 @@ rawData.forEach(function(record) {
 		tempKvps = {},
 		locations;
 
+
+	console.log(record);
+	process.exit();
+
 	//translate data to new format
 
 	_.keys(record.data.keyValuePairs.merge).forEach(function(key) {
