@@ -1,303 +1,174 @@
-//necessary merge
+//============================================
+//||         INCLUDES AND CONF              ||
+//============================================
 
+//lib
 var fs = require('fs'),
-	_ = require('underscore'),
-	InsertParser = require('./sql-insert-to-json/app.js'),
-	winston = require('winston'),
-	jsonMerge = require('json-premerge'),
-	logger,
-	VERSION = '0.2',
-	logger,
-	schema,
-	jsonData = [],
 	async = require('async'),
-	processFile,
-	combineDataByHash,
-	DATA_DIR = './data',
-	cleanNulls,
-	writeFile,
-	mapLocations,
-	mapLocation,
-	locationRef,
-	crypto = require('crypto');
+	_ = require('underscore'),
+	winston = require('winston'),
+	path = require('path'),
+	jsonMerge = require('json-premerge'),
+	mongoClient = require('mongodb'),
+	csvParse = require('csv-parse');
 
-locationRef = JSON.parse(fs.readFileSync('./ref/locations.json').toString());
-logger = new winston.Logger();
+//src
+var getFileInfo = require('./src/getFileInfo'),
+	cleanNulls = require('./src/cleanNulls'),
+	InsertParser = require('./sql-insert-to-json/app'),
+	createHash = require('./src/createMD5'),
+	createSupplierHash = require('./src/createSupplierHash'),
+	writeToMongo = require('./src/writeToMongo');
 
+//conf
+var conf = JSON.parse(fs.readFileSync('./conf.json').toString()),
+	awardsSchema = JSON.parse(fs.readFileSync('./src/awardsSchema.json').toString());
+
+//logger
+var logger = new winston.Logger();
 logger.add(winston.transports.Console, {colorize:true})
 
-// var codedHashes = JSON.parse(fs.readFileSync('./completed-batches/codedHashes-b1.json').toString());
+//parser
+var parser = new InsertParser(awardsSchema);
 
-var conf = JSON.parse(fs.readFileSync('./conf.json').toString());
+//global
+var outputData = [];
 
 
-cleanNulls = function(arr) {
-	arr.forEach(function(obj) {
-		_.each(_.keys(obj), function(key) {
-			if (obj[key] === 'NULL' || obj[key] === 'NULL)') {
-				obj[key] = '';
-			}
-		})
-	})
+function getTableName(statement) {
+	var insertSubStr = 'INSERT INTO '
+	return statement.substr(insertSubStr.length, statement.indexOf(' VALUES') - insertSubStr.length ).replace(/"/g, '');
 }
 
+//============================================
+//||   MAIN FUNCTION FOR FILE PROCESSING    ||
+//============================================
 
-mapLocation = function(location) {
-
-	var levels,
-	lev,
-	l, 
-	i,
-	result = [];
-
-	levels = ['adm4', 'adm3', 'adm2', 'adm1'];
-
-	if (location.OTHER_LOCATION) {
-		result.unshift('Other: ' + location.OTHER_LOCATION) 
-	}
-	else {
-		result.unshift('');
-	}
-
-	for (l in levels) {
-
-		lev = levels[l];
-
-		if (location[lev.toUpperCase()]) {
-
-			for (i = l; i >= 0; i-- ) {
-				result.unshift('(unk)');
-			}
-
-			addLocations(result, location, location[lev.toUpperCase()], lev);
-			break;
-		}
-
-	}
-
-	return result;
-
-}
-
-function addLocations (arr, location, name, lev) {
-
-
-	var levels = ['adm4', 'adm3', 'adm2', 'adm1'],
-	ref,
-	nextLevel;
-
-	ref = locationRef[lev][name];
-
-	if(!ref) {
-		logger.warn('Can\'t find level ' + lev + ' location ' + name);
-		arr = [];
-		return;
-	}
-
-	nextLevel = levels[levels.indexOf(lev) + 1];
-
-	if (Array.isArray(ref) ) {
-		//if it's an array use the coded parent or else just give up
-		if (location[nextLevel.toUpperCase()]) {
-			arr.unshift(name);
-			addLocations( arr, location, location[nextLevel.toUpperCase()] , nextLevel );
-		}
-		else {
-			logger.warn('Level ' + lev + ' location ' + name + ' has multiple matches and no coded parent.');
-			arr = [];
-			return;
-		}
-
-	}
-	else {
-
-		arr.unshift(ref.name);
-		
-		if (nextLevel) {
-			addLocations( arr, location, locationRef[nextLevel][ref.parent].name, nextLevel );
-		}
-	}
-
-}
-
-mapLocations = function(locations) {
-	var result = [];
-
-	locations.forEach (function(location) {
-
-		var mappedLocation,
-		i;
-
-		mappedLocation = mapLocation(location);
-
-		for (i = 0; i < mappedLocation.length; i++ ) {
-
-			if(mappedLocation[i] && mappedLocation[i] !== '(unk)') {
-				result.push(mappedLocation.slice(0,i+1).join('|'));
-			}
-
-		}
-
-
-		
-
-
-	})
+var processFile = function(file, callback) {
 	
+	var fileInfo = getFileInfo(file),
+		rawData,
+		parsedData = {},
+		scrapedAwards,
+		codedAwards,
+		codedSuppliers;
 
-	result = _.uniq(result);
+	
+	//PROCESS FILE
+	if (_.contains(conf.awardVersions, fileInfo.version)) {
+		
+		//convert raw data :(
+		logger.info('Starting file', file, '\n<=========================================================>')
+		// rawData = parser.parse(fs.readFileSync(path.join(conf.dataDir, file)).toString().split('\n'));
+		rawData = fs.readFileSync(path.join(conf.dataDir, file), 'utf8').toString();
+		rawData = rawData.replace(/"CONSTRUCTION OF RAPTI KHOLA BRIDGE"/g, 'CONSTRUCTION OF RAPTI KHOLA BRIDGE')
 
+		rawData = rawData.split('\n');
 
-	return result;
-}
+		async.each(rawData,
+		function(row, callback)  {
+			var insertLength = row.match(/INSERT INTO (")?[a-zA-Z0-9]*(")? VALUES/)[0].length;
+			var tableName = getTableName(row);
+			var valueString = row.substr(insertLength + 1, row.length - insertLength - 2);
+			csvParse(valueString, {quote:'\''}, function(err, data) {
+				if(err) {
+					console.log(file);
+					console.log(valueString);
+					throw new Error(err);					
+				}
+				var tempObj = {};
+				parsedData[tableName] = parsedData[tableName] || [];
 
+				awardsSchema[tableName].forEach(function(key, i) {
+					tempObj[key] = data[0][i]
+				})
 
-//callback for file processing
-processFile = function(file, callback) {
+				//hacky sanity check
+				var expectedLengths = {
+					'CODEDAWARD': 8,
+					'CODEDSUPPLIER': 14,
+					'AWARD': 16
+				}
 
-	if (file.substr(0,2) !== 'a1') {
-		var coderName = file.substr(3,file.indexOf('.sql') - 3);
+				if (data[0].length !== expectedLengths[tableName]) {
+					logger.error('A record has the wrong length');
+					throw new Error();
+				}
 
-		fs.readFile( DATA_DIR + '/' + file, function (err, data) {
-
-
-			//TODO: version handling not through a (non)constant and make it more strucutred in the file name
-
-			if (file.substr(0,2) === 'b1' || file.substr(0,2) === 'b2' ) {
-				VERSION = '0.1';
-			}
-			else if (file.substr(0,2) === 'b3' || file.substr(0,2) === 'b4') {
-				VERSION = '0.2';
-			}
-
-			else {
-				VERSION = '0.3';
-			}
-
+				parsedData[tableName].push(tempObj);
+				callback();
+			})
+		},
+		function(){
 			
 
 
-
-			//set schema
-			if( VERSION === '0.1') {
-				schema = {
-					TENDERNOTICE: ['ID','TENDERNOTICENUMBER','STATUS','URL','CONTRACTDETAILS','ISSUER','PUBLICATIONDATE','PUBLISHEDIN','DOCUMENTPURCHASEDEADLINE','SUBMISSIONDEADLINE','OPENINGDATE','CONTRACTNAME','CONTRACTDESCRIPTION','COSTESTIMATE','ESTIMATECURRENCY','DATASOURCE'],
-					CODEDTENDERNOTICE: ['ID','TENDER_NOTICE_ID','CODER_ID','TENDERNOTICENUMBER','CONTRACTNUMBER','CONTRACTTYPE','PROJECTNAME','PROJECTNUMBER','PROJECTFUNDER','CONTRACTNAME','CONTRACTDESCRIPTION','COSTESTIMATE','ESTIMATECURRENCY','DATASOURCE'],
-					CODEDLOCATION: ['ID','CODED_TENDER_NOTICE_ID','ADM1','ADM2','ADM3','ADM4','WARD','OTHER_LOCATION','OTHER_LOCATION_DESC','ACTIVITY_DESC']
-				}
-			}
-			else if ( VERSION === '0.2') {
-				schema = {
-					TENDERNOTICE: ['ID','TENDERNOTICENUMBER','STATUS','URL','CONTRACTDETAILS','ISSUER','PUBLICATIONDATE','PUBLISHEDIN','DOCUMENTPURCHASEDEADLINE','SUBMISSIONDEADLINE','OPENINGDATE','CONTRACTNAME','CONTRACTDESCRIPTION','COSTESTIMATE','ESTIMATECURRENCY','DATASOURCE','AGENCY','HASH','CODER1','CODER2'],
-					CODEDTENDERNOTICE: ['ID','TENDER_NOTICE_ID','CODER_ID','TENDERNOTICENUMBER','CONTRACTNUMBER','CONTRACTTYPE','PROJECTNAME','PROJECTNUMBER','PROJECTFUNDER','CONTRACTNAME','CONTRACTDESCRIPTION','COSTESTIMATE','ESTIMATECURRENCY','DATASOURCE','NOTES'],
-					CODEDLOCATION:  ['ID','CODED_TENDER_NOTICE_ID','ADM1','ADM2','ADM3','ADM4','WARD','OTHER_LOCATION','OTHER_LOCATION_DESC','ACTIVITY_DESC']
-				}
-			}
-			else {
-				schema = {
-					TENDERNOTICE: ['ID','TENDERNOTICENUMBER','STATUS','URL','CONTRACTDETAILS','ISSUER','PUBLICATIONDATE','PUBLISHEDIN','DOCUMENTPURCHASEDEADLINE','SUBMISSIONDEADLINE','OPENINGDATE','CONTRACTNAME','CONTRACTDESCRIPTION','COSTESTIMATE','ESTIMATECURRENCY','DATASOURCE','AGENCY','HASH','CODER1','CODER2'],
-					CODEDTENDERNOTICE: ['ID', 'TENDER_NOTICE_ID', 'CODER_ID', 'TENDERNOTICENUMBER', 'CONTRACTNUMBER', 'GOODS', 'SERVICES', 'CONSTRUCTION', 'MAINTENANCE', 'PROJECTNAME', 'PROJECTNUMBER', 'PROJECTFUNDER', 'CONTRACTNAME', 'CONTRACTDESCRIPTION', 'COSTESTIMATE', 'ESTIMATECURRENCY', 'DATASOURCE', 'NOTES'],
-					CODEDLOCATION:  ['ID','CODED_TENDER_NOTICE_ID','ADM1','ADM2','ADM3','ADM4','WARD','OTHER_LOCATION','OTHER_LOCATION_DESC','ACTIVITY_DESC']
-				}
-			}
-			
-			if(err) {throw err};
-
-			var statements = data.toString().split('\n'),
-				parser = new InsertParser(schema),
-				rawData,
-				tenderNotices,
-				codedTenderNotices,
-				codedLocations,
-				results = [],
-				resultObj,
-				assignCoderName,
-				coder = coderName;
-
-			logger.info('starting ' + file);
-			rawData = parser.parse(statements);
+			scrapedAwards = parsedData.AWARD;
+			codedAwards = parsedData.CODEDAWARD;
+			codedSuppliers = parsedData.CODEDSUPPLIER;
 
 
-			//raw data contains three tables which need to be split up
-			tenderNotices = rawData.TENDERNOTICE;
-			codedTenderNotices = rawData.CODEDTENDERNOTICE;
-			codedLocations = rawData.CODEDLOCATION;
 
-			cleanNulls(tenderNotices);
-			cleanNulls(codedTenderNotices);
-			cleanNulls(codedLocations);
+			cleanNulls(scrapedAwards);
+			cleanNulls(codedAwards);
+			cleanNulls(codedSuppliers);
 
-			//only needs to be done because I stupidly left this out of the first version of the schema
-			assignCoderName = function (record) {
-				// console.log(file.substr(3, file.length - 7));
-				record['coder'] = ''; //TODO: implement this based on file name
-			}
+			scrapedAwards.forEach(function(award) {
 
-			codedTenderNotices.map (assignCoderName);
-			codedLocations.map(assignCoderName);
-
-			tenderNotices.forEach( function (tenderNotice) {
-
-				var hash = '';
-
-				//resultObj is the result of the merging of all three data sets
-				resultObj = {};
-				resultObj.scraped = _.clone(tenderNotice);
+				var tempAward = {};
 
 				//create hash
-				if (!resultObj.scraped.hash) {
-					_.each(resultObj.scraped, function(i) {
-						hash = hash + i;
-					})
-					resultObj.scraped.hash = hash;
+				tempAward.hash = createHash(award);
+
+				//add scraped data to record
+				tempAward.scraped = award;
+
+				//add coded award data to record
+				tempAward.codedAward = _.findWhere(codedAwards, {AWARDID: tempAward.scraped.ID});
+
+				//add coded supplier data to record and sanity check on coded dat
+				tempAward.suppliers = _.where(codedSuppliers, {AWARD_ID: tempAward.scraped.ID})
+
+				//sanity checks
+				if (!tempAward.codedAward) {
+					logger.warn('No coded award data for', fileInfo.coder, 'record', tempAward.scraped.ID)
+				}
+				if (!tempAward.suppliers || _.isEmpty(tempAward.suppliers)) {
+					logger.warn('No coded supplier data for', fileInfo.coder, 'record', tempAward.scraped.ID)
 				}
 
-				resultObj.coded = _.findWhere(codedTenderNotices, {TENDER_NOTICE_ID: resultObj.scraped.ID});
-				if (resultObj.coded) {
-					resultObj.locations = _.where(codedLocations, {CODED_TENDER_NOTICE_ID: resultObj.coded.ID});
-				}
-				else {
-					logger.warn('No coded data for ' + coderName + ' record ' + resultObj.scraped.ID);
-				}
-				
-				//sanity check
-				if (_.where(codedTenderNotices, {TENDER_NOTICE_ID: resultObj.scraped.ID}).length > 1 ) {
-					logger.warn ('Multiple coded matches for ' + coderName + ' record ' + resultObj.scraped.ID);
-				}
+				//create hashes for supplier matching
+				tempAward.suppliers.forEach(function(supplier) {
+					supplier.hash = createSupplierHash(supplier)
+				})
 
-				//process locations
-				if (resultObj.locations) {
-					resultObj.locations = mapLocations(resultObj.locations);
-				}
-
-				//add resultObject to output if it hasn't been coded already in another batch
-				// if (!_.contains(codedHashes, resultObj.scraped.hash)) {
-				results.push(resultObj);				
-				// }
-
-
+				outputData.push(_.clone(tempAward));
 
 			})
 
-			jsonData = jsonData.concat(results);
-
+			logger.info('Done file', '\n</=======================================================>')
 			callback();
 
-		});
+		})
+
 	}
+
+	//DON'T PROCESS FILE
 	else {
-		//awards
+		logger.info('File', file, 'ignored.')
 		callback();
 	}
-
-
+	
 }
 
-writeFile = function(data) {
 
-}
+//============================================
+//||  FUNCTION FOR COMBINGING DATA BY HASH  ||
+//============================================
 
-combineDataByHash = function() {
+
+var combineDataByHash = function() {
+
 
 	var combinedData = {},
 		goodRecords = [],
@@ -308,19 +179,21 @@ combineDataByHash = function() {
 		mergedResults = [];
 
 	logger.info('==========================================');
-	logger.info('Done processing data files. ' + jsonData.length + ' records found.');
+	logger.info('==========================================');
 
-	jsonData.forEach(function(record) {
+	logger.info('Done processing data files. ' + outputData.length + ' records found.');
 
-	var recordId = record.scraped.hash,
+	outputData.forEach(function(record) {
+
+		var recordId = record.hash,
 			cleanRecord;
 
-			//clean up record a little bit
-		if (record.coded || record.locations) {
-			cleanRecord = _.clone(record.coded) || {};
+		//clean up record a little bit
+		if (record.codedAward || record.suppliers) {
+			cleanRecord = _.clone(record.codedAward) || {};
 			cleanRecord.scraped = record.scraped || {};
 			cleanRecord.hash = recordId;
-			cleanRecord.locations = _.clone(record.locations) || [];
+			cleanRecord.suppliers = _.clone(record.suppliers) || [];
 
 			//push into results array
 			combinedData[recordId] = combinedData[recordId] || [];
@@ -328,28 +201,25 @@ combineDataByHash = function() {
 		}
 
 	})
-	var dones = [];
-	
+
+
 	//look for records with the right length
 	_.keys(combinedData).forEach(function(hash) {
 		if (combinedData[hash].length === 2) {
 			goodRecords.push(_.clone(combinedData[hash]));
-			dones.push(hash);
 		}
 		else if (combinedData[hash].length === 1) {
 			shortRecords.push(_.clone(combinedData[hash]));
 		}
 		else if (combinedData[hash].length > 2) {
 			longRecords.push(_.clone(combinedData[hash]));
-			dones.push(hash);
 		}
 		else {
 			badRecords.push(_.clone(combinedData[hash]))
 		}
 	});
 
-	fs.writeFileSync('./output/dones.json', JSON.stringify(dones));
-	
+
 	if (shortRecords.length) {logger.warn(shortRecords.length + ' hashes found with only one record.')}
 	if (longRecords.length) {logger.warn(longRecords.length + ' hashes found with too many records.')};
 	if( badRecords.length) {logger.warn(badRecords.length + ' hashes found that seem really wrong.');}
@@ -358,75 +228,91 @@ combineDataByHash = function() {
 	logger.info('==========================================');
 	logger.info('Putting data into correct merge format');
 
+	//add good records
 	results = results.concat(goodRecords);
 
+	//add long records
 	longRecords.forEach(function(record) {
 		var shortenedRecord = [record[0], record[1]];
 		results.push(shortenedRecord);
 	});
 
-	// if (conf.includeShortRecords === true) {
-	// 	shortRecords.forEach(function(record) {
-	// 		var lengthenedRecord = [];
-	// 		lengthenedRecord[0] = record[0];
-	// 		lengthenedRecord[1] = {};
-	// 		_.keys(record[0]).forEach(function(key){
-	// 			if(Array.isArray(record[0][key])) {
-	// 				lengthenedRecord[1][key] = [];
-	// 			}
-	// 			else {
-	// 				lengthenedRecord[1][key] = '';
-	// 			}
-	// 		})
-	// 		results.push(lengthenedRecord);
-	// 	})
-	// }
+	//add short records if enabled
+	if (conf.includeShortRecords === true) {
+		logger.warn('User has enabled the inclusion of short records (with only one coder)')
+		shortRecords.forEach(function(record) {
+			var lengthenedRecord = [];
+			lengthenedRecord[0] = record[0];
+			lengthenedRecord[1] = {};
+			_.keys(record[0]).forEach(function(key){
+				if(Array.isArray(record[0][key])) {
+					lengthenedRecord[1][key] = [];
+				}
+				else {
+					lengthenedRecord[1][key] = '';
+				}
+			})
+			results.push(lengthenedRecord);
+		})
+	}
 
+	logger.info(results.length + ' records are ready to be merged');
 
+	//MERGE FINAL RECORDS
+	async.each(results,
+	function(result, callback) {
 
-	logger.info('==========================================');
-	logger.info('Merging ' + results.length + ' records');
-
-	//merge all of the data into the a-b format and output to file
-	async.each(results, function(result, callback) {
-		
-		
+		//save scraped data as separate object
 		var scraped = _.clone(result[0].scraped);
-		
+
+		var recordId = result[0].hash;
+
+		// remove scraped data from each array member
 		result = _.map(result, function(r) {
 			return _.clone(_.omit(r, 'scraped'));
 		})
-		
-		
+
+
+		//merge JSON
 		jsonMerge(result, function(err, data) {
 			var temp = {};
-			//TODO: add hash here as ID
-			
+
 			temp.data = _.clone(data);
 			
 			temp.meta = {
 				status: 'open',
-				workLog: []
+				workLog: [],
+				id: recordId
 			};
 			
 			temp.scraped = scraped;
-			
+
 			mergedResults.push(temp);
-			callback()
+
+			callback();
+
 		});
+		
+
+
 	},
-	function() {
-		logger.info(mergedResults.length + ' merged records created');
-		fs.writeFileSync('./output/output.json', JSON.stringify(mergedResults));
-		logger.info('Data written to file.');
+
+	//WRITE FINAL RECORDS TO MONGO
+	function(err) {
+		console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
+
+		logger.info(mergedResults.length + ' records will be written into the final dataset.');
+		//TODO: need to make sure aren't previously coded
+		writeToMongo(mergedResults, logger);
 	});
 
 }
 
 
+//============================================
+//||     CONTROL FLOW AND EXECUTION         ||
+//============================================
 
-//read every file and write the output
-logger.info('Processing data files...');
-fs.readdir(DATA_DIR, function(err, files) {
-	async.each(files, processFile, combineDataByHash);
+fs.readdir(conf.dataDir, function(err, files) {
+	async.eachSeries(files, processFile, combineDataByHash);
 });
