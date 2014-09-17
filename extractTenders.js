@@ -2,11 +2,79 @@ var fs = require('fs'),
 	_ = require('underscore'),
 	csvParse = require('csv-parse'),
 	async = require('async'),
-	mongodb = require('mongodb');
+	mongodb = require('mongodb'),
+	createHash = require('./src/createMd5FromJson.js');
 
 var	data = [];
 
 var conf = JSON.parse(fs.readFileSync('./conf.json').toString());
+
+var scrapedFields = [
+	'STATUS',
+	'ISSUER',
+	'PUBLICATIONDATE',
+	'PUBLISHEDIN',
+	'DOCUMENTPURCHASEDEADLINE',
+	'SUBMISSIONDEADLINE',
+	'OPENINGDATE',
+	'URL'
+]
+
+
+var typeFields = [
+	'GOODS',
+	'SERVICES',
+	'CONSTRUCTION',
+	'MAINTENANCE'
+]
+
+
+
+var problemRecords = [
+	'KDC 069/070',
+	'2069/070(MaJaVK-LiV-001)',
+	'KGA-069/070-TC-10',
+	'KGA-069/070-TM-07',
+	'KGA-069/070-TM-12',
+	'NEA/ES/BGHEP-01',
+	'NEA/ES/BGHEP-01',
+	'NEA/ES/BGHEP-01',
+	'MKHPS-070/071-ES-Q3',
+	'NEA/BDC',
+	'NEA/BDC',
+	'069/070 -MKHPS-ES-T1'
+]
+
+
+var exclude = function(record) {
+	if (record.meta.status === 'open') {
+		return true
+	}
+	else if (record.data.keyValuePairs.merge.NOTES && record.data.keyValuePairs.merge.NOTES.value === 'NPR') {
+		return true;
+	}
+	else if (record.data.keyValuePairs.merge.CONTRACTTYPE && record.data.keyValuePairs.merge.CONTRACTTYPE.value.indexOf('NULL') > -1) {
+		return true;
+	}
+	else if (record.data.keyValuePairs.merge.CONTRACTNUMBER && record.data.keyValuePairs.merge.CONTRACTNUMBER.value.indexOf('NULL') > -1) {
+		return true;
+	}
+	else if (record.data.keyValuePairs.merge.PROJECTNAME && record.data.keyValuePairs.merge.PROJECTNAME.value === 'FALSE') {
+		return true;
+	}
+	else if (record.data.keyValuePairs.merge.CONTRACTTYPE && record.data.keyValuePairs.merge.CONTRACTTYPE.value.indexOf('Construction') > -1 ) {
+		return true;
+	}
+	else if (_.contains(problemRecords, record.data.keyValuePairs.merge['TENDERNOTICENUMBER'].cleanValue) || _.contains(problemRecords, record.data.keyValuePairs.merge['TENDERNOTICENUMBER'].value)){
+		console.log('problem record');
+		return true
+	}
+
+	else {
+		return false;
+	}
+}
+
 
 
 var mapKey = function(key) {
@@ -44,60 +112,117 @@ var mapKey = function(key) {
 
 async.each(conf.previousContractDBs,
 function(dbName, callback) {
-	mongodb.connect('mongodb://localhost:27014/' + dbName, function(err, db) {
+	mongodb.connect('mongodb://localhost:27017/' + dbName, function(err, db) {
 		
 		if (err) throw new Error(err);
 
-		db.collections('contracts').find().toArray(function(err, arr) {
-			console.log('foo');
-			process.exit();
+		db.collection('contracts').find().toArray(function(err, rawData) {
 
 
 			rawData.forEach(function(record) {
+
+				exclude(record);
 				
-				var tempRecord = {},
-					tempKvps = {},
-					locations;
+
+				if (!exclude(record)) {
+
+					var tempRecord = {},
+						tempKvps = {},
+						locations;
+
+					var tempType = '';
+
+					// console.log(record.data.keyValuePairs.merge['TENDERNOTICENUMBER'].value)
+
+		
 
 
-				console.log(record);
-				process.exit();
+					//translate data to new format
 
-				//translate data to new format
+					_.keys(record.data.keyValuePairs.merge).forEach(function(key) {
+						if ((record.data.keyValuePairs.merge[key].cleanValue || record.data.keyValuePairs.merge[key].value) && mapKey(key)) {
+							tempKvps[mapKey(key)] = record.data.keyValuePairs.merge[key].cleanValue || record.data.keyValuePairs.merge[key].value;
+						}
+					})
 
-				_.keys(record.data.keyValuePairs.merge).forEach(function(key) {
-					if (record.data.keyValuePairs.merge[key].match && mapKey(key)) {
-						tempKvps[mapKey(key)] = record.data.keyValuePairs.merge[key].value;
+					//clean data
+
+					//add desired scraped data
+
+					scrapedFields.forEach(function(field) {
+						if (record.scraped[field]){
+							tempRecord[mapKey(field)] = record.scraped[field]
+						}
+
+					})
+
+
+					locations = _.pluck(record.data.arrays.merge.locations,'value');
+
+					// console.log(locations);
+
+					//more cleaning data
+					
+					if (!_.isEmpty(tempKvps)) {
+						_.extend(tempRecord, tempKvps);
 					}
-				})
 
-				//clean data
+					if (locations.length > 0) {
+						tempRecord.locations = _.clone(locations);
+					}
 
-				if (tempKvps['contractIssuer']) {
-					tempKvps['contractIssuer'] = tempKvps['contractIssuer'].replace('Issued by\\u0009','')
+					if (tempRecord['contractIssuer']) {
+						tempRecord['contractIssuer'] = tempRecord['contractIssuer'].replace('Issued by\\u0009','')
+					}
+
+					if (tempRecord['contractType'] && tempRecord['contractType'] === 'MULTIPLE TYPES') {
+						delete tempRecord['contractType'];
+					}
+
+
+					if(tempRecord.contractType) {
+						tempType = tempRecord.contractType;
+					}
+
+					tempRecord.contractType = [];
+
+					if (tempType && tempType !== 'MULTIPLE TYPES') {
+						if (tempType === 'Goods and Services') {
+							tempRecord.contractType.push('GOODS');
+							tempRecord.contractType.push('SERVICES');
+						}
+						else if (tempType === 'Maintainence') {
+							tempRecord.contractType.push('MAINTENANCE')
+						}
+						else if (tempType === 'Service') {
+							tempRecord.contractType.push('SERVICES')
+						}
+						else {
+							tempRecord.contractType.push(tempType);
+						}
+					}
+
+					typeFields.forEach(function(type) {
+						// console.log(record.data.keyValuePairs.merge);
+						if (record.data.keyValuePairs.merge[type] && record.data.keyValuePairs.merge[type].value === 'TRUE') {
+							tempRecord.contractType.push(type);
+						}
+					})
+
+
+					tempRecord.id = createHash(_.omit(record.scraped, ['ID', 'hash']));
+
+					data.push(_.clone(tempRecord));
+
 				}
 
-				if (tempKvps['contractType'] && tempKvps['contractType'] === 'MULTIPLE TYPES') {
-					delete tempKvps['contractType'];
-				}
+		
 
-				locations = _.pluck(record.data.arrays.merge.locations,'value');
-
-				// console.log(locations);
-
-				//more cleaning data
-				
-				if (!_.isEmpty(tempKvps)) {
-					_.extend(tempRecord, tempKvps);
-				}
-
-				if (locations.length > 0) {
-					tempRecord.locations = _.clone(locations);
-				}
-
-				data.push(_.clone(tempRecord));
 
 			})
+
+			db.close();
+			callback();
 
 
 		})
@@ -175,8 +300,18 @@ function(){
 				if (_.isEmpty(d)) {
 					delete d;
 				}
+
+
 		
 			})
+
+			console.log(data.length);
+
+			var uniqueData = _.uniq(data, function(d) {return d.id});
+
+			fs.writeFileSync('./temp.json', JSON.stringify(uniqueData))
+
+			console.log(uniqueData.length)
 
 
 		}

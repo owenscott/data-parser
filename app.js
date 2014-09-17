@@ -241,7 +241,7 @@ processFile = function(file, callback) {
 
 			//create hash
 			if (!resultObj.scraped.hash) {
-				_.each(resultObj.scraped, function(i) {
+				_.each(_.omit(resultObj.scraped, 'id'), function(i) {
 					hash = hash + i;
 				})
 				resultObj.scraped.hash = hash;
