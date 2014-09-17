@@ -2,7 +2,8 @@ var mongoClient = require('mongodb').MongoClient,
 	mongoObjectId = require('mongodb').ObjectID,
 	fs = require('fs'),
 	async = require('async'),
-	_ = require('underscore');
+	_ = require('underscore'),
+	exclude = require('./src/exclude.js');
 
 
 
@@ -28,7 +29,7 @@ async.each(PREVIOUS_DBS,
 					// console.log(record.scraped.hash === temphash);
 					// console.log(record.scraped.hash);
 
-					if(record.meta.status === 'closed') {
+					if(!exclude(record)) {
 						completedContractHashes.push(record.scraped.hash);
 						if (!record.scraped.hash) {
 							console.log('warning: record with no hash')
@@ -48,8 +49,7 @@ async.each(PREVIOUS_DBS,
 function makehash(obj) {
 	
 	var temp = '';
-
-	_.each(_.omit(obj, 'hash'), function(val) {
+	_.each(_.omit(obj, ['hash', 'ID']), function(val) {
 		temp += val;
 	})
 

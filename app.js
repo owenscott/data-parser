@@ -19,17 +19,14 @@ var fs = require('fs'),
 	mapLocations,
 	mapLocation,
 	locationRef,
-	crypto = require('crypto');
+	codedHashes = [];
 
 locationRef = JSON.parse(fs.readFileSync('./ref/locations.json').toString());
 logger = new winston.Logger();
 
 logger.add(winston.transports.Console, {colorize:true})
 
-var codedHashes = JSON.parse(fs.readFileSync('./completed-batches/codedHashes-b1.json').toString());
-
-var dump = fs.createWriteStream('./foo.txt');
-
+var conf = JSON.parse(fs.readFileSync('./conf.json').toString());
 
 cleanNulls = function(arr) {
 	arr.forEach(function(obj) {
@@ -40,7 +37,6 @@ cleanNulls = function(arr) {
 		})
 	})
 }
-
 
 mapLocation = function(location) {
 
@@ -137,16 +133,9 @@ mapLocations = function(locations) {
 			}
 
 		}
-
-
-		
-
-
 	})
-	
 
 	result = _.uniq(result);
-
 
 	return result;
 }
@@ -167,6 +156,9 @@ processFile = function(file, callback) {
 		}
 		else if (file.substr(0,2) === 'b3' || file.substr(0,2) === 'b4') {
 			VERSION = '0.2';
+		}
+		else if (file.substr(0,2) === 'a1' || file.substr(0,2) === 'a2') {
+			VERSION = 'awards';
 		}
 		else {
 			VERSION = '0.3';
@@ -198,87 +190,87 @@ processFile = function(file, callback) {
 		
 		if(err) {throw err};
 
-		var statements = data.toString().split('\n'),
-			parser = new InsertParser(schema),
-			rawData,
-			tenderNotices,
-			codedTenderNotices,
-			codedLocations,
-			results = [],
-			resultObj,
-			assignCoderName,
-			coder = coderName;
+		if (VERSION && VERSION !== 'awards') {
 
-		logger.info('starting ' + file);
-		rawData = parser.parse(statements);
+			var statements = data.toString().split('\n'),
+				parser = new InsertParser(schema),
+				rawData,
+				tenderNotices,
+				codedTenderNotices,
+				codedLocations,
+				results = [],
+				resultObj,
+				assignCoderName,
+				coder = coderName;
+
+			logger.info('starting ' + file);
+			rawData = parser.parse(statements);
+
+			//raw data contains three tables which need to be split up
+			tenderNotices = rawData.TENDERNOTICE;
+			codedTenderNotices = rawData.CODEDTENDERNOTICE;
+			codedLocations = rawData.CODEDLOCATION;
+
+			cleanNulls(tenderNotices);
+			cleanNulls(codedTenderNotices);
+			cleanNulls(codedLocations);
+
+			//only needs to be done because I stupidly left this out of the first version of the schema
+			assignCoderName = function (record) {
+				
+				record['coder'] = ''; //TODO: implement this based on file name
+			}
+
+			codedTenderNotices.map (assignCoderName);
+			codedLocations.map(assignCoderName);
+
+			tenderNotices.forEach( function (tenderNotice) {
+
+				var hash = '';
+
+				//resultObj is the result of the merging of all three data sets
+				resultObj = {};
+				resultObj.scraped = _.clone(tenderNotice);
+
+				//create hash
+				if (!resultObj.scraped.hash) {
+					_.each(_.omit(resultObj.scraped, 'id'), function(i) {
+						hash = hash + i;
+					})
+					resultObj.scraped.hash = hash;
+				}
+
+				resultObj.coded = _.findWhere(codedTenderNotices, {TENDER_NOTICE_ID: resultObj.scraped.ID});
+				if (resultObj.coded) {
+					resultObj.locations = _.where(codedLocations, {CODED_TENDER_NOTICE_ID: resultObj.coded.ID});
+				}
+				else {
+					logger.warn('No coded data for ' + coderName + ' record ' + resultObj.scraped.ID);
+				}
+				
+				//sanity check
+				if (_.where(codedTenderNotices, {TENDER_NOTICE_ID: resultObj.scraped.ID}).length > 1 ) {
+					logger.warn ('Multiple coded matches for ' + coderName + ' record ' + resultObj.scraped.ID);
+				}
+
+				//process locations
+				if (resultObj.locations) {
+					resultObj.locations = mapLocations(resultObj.locations);
+				}
+
+				//add resultObject to output if it hasn't been coded already in another batch
+				if (!_.contains(codedHashes, resultObj.scraped.hash)) {
+					results.push(resultObj);				
+				}
 
 
-		//raw data contains three tables which need to be split up
-		tenderNotices = rawData.TENDERNOTICE;
-		codedTenderNotices = rawData.CODEDTENDERNOTICE;
-		codedLocations = rawData.CODEDLOCATION;
+				var cname = file.substr(3, file.length - 7);
 
-		cleanNulls(tenderNotices);
-		cleanNulls(codedTenderNotices);
-		cleanNulls(codedLocations);
 
-		//only needs to be done because I stupidly left this out of the first version of the schema
-		assignCoderName = function (record) {
-			
-			record['coder'] = ''; //TODO: implement this based on file name
+			})
+
+			jsonData = jsonData.concat(results);
 		}
-
-		codedTenderNotices.map (assignCoderName);
-		codedLocations.map(assignCoderName);
-
-		tenderNotices.forEach( function (tenderNotice) {
-
-			var hash = '';
-
-			//resultObj is the result of the merging of all three data sets
-			resultObj = {};
-			resultObj.scraped = _.clone(tenderNotice);
-
-			//create hash
-			if (!resultObj.scraped.hash) {
-				_.each(_.omit(resultObj.scraped, 'id'), function(i) {
-					hash = hash + i;
-				})
-				resultObj.scraped.hash = hash;
-			}
-
-			resultObj.coded = _.findWhere(codedTenderNotices, {TENDER_NOTICE_ID: resultObj.scraped.ID});
-			if (resultObj.coded) {
-				resultObj.locations = _.where(codedLocations, {CODED_TENDER_NOTICE_ID: resultObj.coded.ID});
-			}
-			else {
-				logger.warn('No coded data for ' + coderName + ' record ' + resultObj.scraped.ID);
-			}
-			
-			//sanity check
-			if (_.where(codedTenderNotices, {TENDER_NOTICE_ID: resultObj.scraped.ID}).length > 1 ) {
-				logger.warn ('Multiple coded matches for ' + coderName + ' record ' + resultObj.scraped.ID);
-			}
-
-			//process locations
-			if (resultObj.locations) {
-				resultObj.locations = mapLocations(resultObj.locations);
-			}
-
-			//add resultObject to output if it hasn't been coded already in another batch
-			if (!_.contains(codedHashes, resultObj.scraped.hash)) {
-				results.push(resultObj);				
-			}
-
-
-			var cname = file.substr(3, file.length - 7);
-			dump.write(resultObj.scraped.URL + ',' + file.substr(0,2) + ',' + cname + '\n');
-
-
-		})
-
-		jsonData = jsonData.concat(results);
-
 
 		callback();
 
@@ -421,37 +413,17 @@ combineDataByHash = function() {
 //read every file and write the output
 logger.info('Processing data files...');
 fs.readdir(DATA_DIR, function(err, files) {
-	async.each(files, processFile, combineDataByHash);
+
+	async.each(
+		files,
+		//add the data file to the new batch if not coded already
+		processFile,
+		//combine and merge the data (writes to file on complete)
+		combineDataByHash
+	)
+
 });
 
 
-
-/* EFore b9-uttam.sql 
-
-info: Done processing data files. 6708 records found.
-warn: 2563 hashes found with only one record.
-warn: 1 hashes found with too many records.
-info: 1945 hashes found that look good
-info: ==========================================
-info: Putting data into correct merge format
-info: ==========================================
-info: Merging 1946 records
-info: 1946 merged records created
-
-
-after:
-
-nfo: Done processing data files. 6982 records found.
-warn: 2612 hashes found with only one record.
-warn: 1 hashes found with too many records.
-info: 1945 hashes found that look good
-info: ==========================================
-info: Putting data into correct merge format
-info: ==========================================
-info: Merging 1946 records
-info: 1946 merged records created
-info: Data written to file.
-
-*/
 
 

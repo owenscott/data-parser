@@ -3,7 +3,8 @@ var fs = require('fs'),
 	csvParse = require('csv-parse'),
 	async = require('async'),
 	mongodb = require('mongodb'),
-	createHash = require('./src/createMd5FromJson.js');
+	createHash = require('./src/createMd5FromJson.js'),
+	exclude = require('./src/exclude.js');
 
 var	data = [];
 
@@ -46,34 +47,7 @@ var problemRecords = [
 ]
 
 
-var exclude = function(record) {
-	if (record.meta.status === 'open') {
-		return true
-	}
-	else if (record.data.keyValuePairs.merge.NOTES && record.data.keyValuePairs.merge.NOTES.value === 'NPR') {
-		return true;
-	}
-	else if (record.data.keyValuePairs.merge.CONTRACTTYPE && record.data.keyValuePairs.merge.CONTRACTTYPE.value.indexOf('NULL') > -1) {
-		return true;
-	}
-	else if (record.data.keyValuePairs.merge.CONTRACTNUMBER && record.data.keyValuePairs.merge.CONTRACTNUMBER.value.indexOf('NULL') > -1) {
-		return true;
-	}
-	else if (record.data.keyValuePairs.merge.PROJECTNAME && record.data.keyValuePairs.merge.PROJECTNAME.value === 'FALSE') {
-		return true;
-	}
-	else if (record.data.keyValuePairs.merge.CONTRACTTYPE && record.data.keyValuePairs.merge.CONTRACTTYPE.value.indexOf('Construction') > -1 ) {
-		return true;
-	}
-	else if (_.contains(problemRecords, record.data.keyValuePairs.merge['TENDERNOTICENUMBER'].cleanValue) || _.contains(problemRecords, record.data.keyValuePairs.merge['TENDERNOTICENUMBER'].value)){
-		console.log('problem record');
-		return true
-	}
 
-	else {
-		return false;
-	}
-}
 
 
 
