@@ -31,20 +31,7 @@ var typeFields = [
 
 
 
-var problemRecords = [
-	'KDC 069/070',
-	'2069/070(MaJaVK-LiV-001)',
-	'KGA-069/070-TC-10',
-	'KGA-069/070-TM-07',
-	'KGA-069/070-TM-12',
-	'NEA/ES/BGHEP-01',
-	'NEA/ES/BGHEP-01',
-	'NEA/ES/BGHEP-01',
-	'MKHPS-070/071-ES-Q3',
-	'NEA/BDC',
-	'NEA/BDC',
-	'069/070 -MKHPS-ES-T1'
-]
+
 
 
 
