@@ -1,4 +1,7 @@
 {
 	"previousContractDBs": ["contractqab1", "contractqab2", "contractqab3", "contractqab4"],
-	"currentContractDB": "contractqab5"
+	"currentContractDB": "contractqab5",
+	"includeShortResults": false,
+	"includeOpenResults": false,
+	"sanitizeUnicode": true
 }

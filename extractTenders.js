@@ -1,14 +1,31 @@
+//8f5df58abbd3e2ef1eb13b6cba556f8e
+//51c72c07b36ddd50491ea2e4e8afb74b
+
 var fs = require('fs'),
 	_ = require('underscore'),
 	csvParse = require('csv-parse'),
 	async = require('async'),
 	mongodb = require('mongodb'),
 	createHash = require('./src/createMd5FromJson.js'),
-	exclude = require('./src/exclude.js');
+	exclude = require('./src/exclude.js'),
+	exclude2 = require('./src/exclude2.js');
 
 var	data = [];
 
 var conf = JSON.parse(fs.readFileSync('./conf.json').toString());
+
+if (conf.includeOpenResults) {
+	conf.previousContractDBs.push(conf.currentContractDB);
+}
+
+
+var agencies = {
+	'edolidar.gov.np': 'DoLIDAR',
+	'edudbc.gov.np': 'DUDBC',
+	'nea.org.np': 'NEA',
+	'dor.gov.np': 'DoR'
+}
+
 
 var scrapedFields = [
 	'STATUS',
@@ -28,15 +45,6 @@ var typeFields = [
 	'CONSTRUCTION',
 	'MAINTENANCE'
 ]
-
-
-
-
-
-
-
-
-
 
 var mapKey = function(key) {
 
@@ -85,7 +93,10 @@ function(dbName, callback) {
 				exclude(record);
 				
 
-				if (!exclude(record)) {
+				if (!exclude(record) || (conf.includeOpenResults && record.meta.status === 'open' && !exclude2(record))) {
+
+
+	
 
 					var tempRecord = {},
 						tempKvps = {},
@@ -95,7 +106,12 @@ function(dbName, callback) {
 
 					// console.log(record.data.keyValuePairs.merge['TENDERNOTICENUMBER'].value)
 
-		
+					if (record.meta.status === 'open') {
+						tempRecord.codingStatus = 'Not Quality Assured'
+					}
+					else {
+						tempRecord.codingStatus = 'Quality Assured'
+					}
 
 
 					//translate data to new format
@@ -167,6 +183,13 @@ function(dbName, callback) {
 						// console.log(record.data.keyValuePairs.merge);
 						if (record.data.keyValuePairs.merge[type] && record.data.keyValuePairs.merge[type].value === 'TRUE') {
 							tempRecord.contractType.push(type);
+						}
+					})
+
+					//add agency
+					_.keys(agencies).forEach(function(key) {
+						if (tempRecord.documentURL && tempRecord.documentURL.indexOf(key) > -1) {
+							tempRecord.agency = agencies[key];
 						}
 					})
 
@@ -266,13 +289,24 @@ function(){
 		
 			})
 
-			console.log(data.length);
+			console.log('A total of', data.length, 'records were extracted.');
 
 			var uniqueData = _.uniq(data, function(d) {return d.id});
 
-			fs.writeFileSync('./temp.json', JSON.stringify(uniqueData))
+			var outputText = JSON.stringify(uniqueData);
 
-			console.log(uniqueData.length)
+			if (conf.sanitizeUnicode) {
+				outputText = outputText.replace(/\\\\/g,'');
+			}
+
+
+			fs.writeFileSync('./temp.json', outputText);
+
+			console.log('A total of', uniqueData.length, 'were found to be unique.')
+
+			console.log('A total of', _.filter(uniqueData, function(d) {return d.codingStatus === 'Quality Assured'}).length, 'were quality assured.')
+			console.log('A total of', _.filter(uniqueData, function(d) {return d.codingStatus === 'Not Quality Assured'}).length, 'were not quality assured.')
+
 
 
 		}

@@ -289,6 +289,7 @@ combineDataByHash = function() {
 		longRecords = [],
 		badRecords = [],
 		results = [],
+		shortResults = [],
 		mergedResults = [];
 
 	logger.info('==========================================');
@@ -349,25 +350,23 @@ combineDataByHash = function() {
 		results.push(shortenedRecord);
 	});
 
-//	shortRecords.forEach(function(record) {
-//		var lengthenedRecord = [];
-//		lengthenedRecord[0] = record[0];
-//		lengthenedRecord[1] = {};
-//		_.keys(record[0]).forEach(function(key){
-//			if(Array.isArray(record[0][key])) {
-//				lengthenedRecord[1][key] = [];
-//			}
-//			else {
-//				lengthenedRecord[1][key] = '';
-//			}
-//		})
-//		results.push(lengthenedRecord);
-//	})
+	shortRecords.forEach(function(record) {
+		var lengthenedRecord = [];
+		lengthenedRecord[0] = record[0];
+		lengthenedRecord[1] = {};
+		_.keys(record[0]).forEach(function(key){
+			if(Array.isArray(record[0][key])) {
+				lengthenedRecord[1][key] = [];
+			}
+			else {
+				lengthenedRecord[1][key] = '';
+			}
+		})
+		if (conf.includeShortResults) {
+			results.push(lengthenedRecord);
+		}
+	})
 
-
-	// shortRecords.forEach(function(record){ 
-	// 	console.log(record[0].scraped.URL);
-	// })
 
 	logger.info('==========================================');
 	logger.info('Merging ' + results.length + ' records');

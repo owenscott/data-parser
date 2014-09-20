@@ -1,7 +1,2 @@
-var fs = require('fs');
-
-var test = fs.readFileSync('./output/draft-output-for-anjesh-7-30.json').toString();
-
-test = JSON.parse(test);
-
-console.log(test.length);
+var str = 'Kali Gandaki \\u2018A\\u2019 Hydroelectric Power';
+console.log(str.replace(/\\/,''));

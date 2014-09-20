@@ -42,10 +42,7 @@ module.exports = function(record) {
 		return true;
 	}
 
-	if (record.meta.status === 'open') {
-		return true;
-	}
-	else if (record.data.keyValuePairs.merge.NOTES && record.data.keyValuePairs.merge.NOTES.value === 'NPR') {
+	if (record.data.keyValuePairs.merge.NOTES && record.data.keyValuePairs.merge.NOTES.value === 'NPR') {
 		return true;
 	}
 	else if (record.data.keyValuePairs.merge.CONTRACTTYPE && record.data.keyValuePairs.merge.CONTRACTTYPE.value.indexOf('NULL') > -1) {

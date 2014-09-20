@@ -25,11 +25,8 @@ async.each(PREVIOUS_DBS,
 					//re-write hash (earlier records used a different approach)
 
 					var temphash = makehash(record.scraped);
-					// console.log(record.scraped.URL);
-					// console.log(record.scraped.hash === temphash);
-					// console.log(record.scraped.hash);
 
-					if(!exclude(record)) {
+					if(!exclude(record) ) {
 						completedContractHashes.push(record.scraped.hash);
 						if (!record.scraped.hash) {
 							console.log('warning: record with no hash')
