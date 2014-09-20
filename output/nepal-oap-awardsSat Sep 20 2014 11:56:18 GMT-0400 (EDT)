@@ -1,0 +1,2758 @@
+[
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=47228",
+    "contractDate": "2014-04-04",
+    "completionDate": "14-06-2014",
+    "tenderNoticeNumber": "02/2070/71",
+    "contractNumber": "13/2070/71",
+    "costEstimate": "963805",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "557429",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Panta Construction",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=53016",
+    "contractDate": "2014-03-06",
+    "completionDate": "None",
+    "tenderNoticeNumber": "01/070-071",
+    "contractNumber": "01/DCM/Baitadi/070-071",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=44939",
+    "contractDate": "2014-04-02",
+    "completionDate": "2014-04-28",
+    "tenderNoticeNumber": "04/070/071",
+    "contractNumber": "04/070/071",
+    "costEstimate": "16597260",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=50540",
+    "contractDate": "2014-04-02",
+    "completionDate": "2014-6-12",
+    "contractNumber": "04/070/071",
+    "costEstimate": "16597260",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "15401011",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=47173",
+    "contractDate": "2014-04-01",
+    "completionDate": "14-06-2014",
+    "tenderNoticeNumber": "02/2070/71",
+    "contractNumber": "07/2070/71",
+    "costEstimate": "917587",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "485674",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Shoura Construction",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=47646",
+    "contractDate": "2014-04-01",
+    "completionDate": "14-06-2014",
+    "tenderNoticeNumber": "02/2070/71",
+    "contractNumber": "12/2070/71",
+    "costEstimate": "561002",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "629410",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=47302",
+    "contractDate": "2014-04-01",
+    "completionDate": "14-06-2014",
+    "tenderNoticeNumber": "02/2070/71",
+    "contractNumber": "28/2070/71",
+    "costEstimate": "1053584",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "680118",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=50560",
+    "contractDate": "2014-04-01",
+    "completionDate": "2014-6-12",
+    "tenderNoticeNumber": "14/070/071",
+    "contractNumber": "14/070/071",
+    "costEstimate": "12765871",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "14425434",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=50564",
+    "contractDate": "2014-04-01",
+    "completionDate": "2014-6-12",
+    "tenderNoticeNumber": "15/070/071",
+    "contractNumber": "15/070/071",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "3432465",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Malika Nirman Sewa",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=52777",
+    "contractDate": "2014-03-31",
+    "completionDate": "N/A",
+    "tenderNoticeNumber": "3/2070/71",
+    "contractNumber": "DDC_BKT_LI_2070/71_11",
+    "costEstimate": "423059",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=52778",
+    "contractDate": "2014-03-31",
+    "completionDate": "N/A",
+    "tenderNoticeNumber": "3/2070/71",
+    "contractNumber": "DDC_BKT_LI_2070/71_12",
+    "costEstimate": "422381",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=52803",
+    "contractDate": "2014-03-31",
+    "completionDate": "N/A",
+    "tenderNoticeNumber": "3/2070/71",
+    "contractNumber": "DDC_BKT_LI_2070/71_13",
+    "costEstimate": "422846",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=52818",
+    "contractDate": "2014-03-31",
+    "completionDate": "N/A",
+    "tenderNoticeNumber": "3/2070/71",
+    "contractNumber": "DDC_BKT_LI_2070/71_14",
+    "costEstimate": "422846",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=47633",
+    "contractDate": "2014-03-27",
+    "completionDate": "14-06-2014",
+    "tenderNoticeNumber": "02/2070/71",
+    "contractNumber": "04/2070/71",
+    "costEstimate": "691933",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "473987",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=47316",
+    "contractDate": "2014-03-27",
+    "completionDate": "14-06-2014",
+    "tenderNoticeNumber": "02/2070/71",
+    "costEstimate": "1088860",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "578192",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=47733",
+    "contractDate": "2014-03-27",
+    "completionDate": "14-06-2014",
+    "tenderNoticeNumber": "02/2070/71",
+    "contractNumber": "09/2070/71",
+    "costEstimate": "922990",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "763185",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Rajan Nirman sewa",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=53030",
+    "contractDate": "2014-03-06",
+    "completionDate": "None",
+    "tenderNoticeNumber": "01/070-071",
+    "contractNumber": "01/DCM/Baitadi/070-071",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=48227",
+    "contractDate": "2014-03-27",
+    "completionDate": "14-06-2014",
+    "tenderNoticeNumber": "02/2070/71",
+    "contractNumber": "11/2070/71",
+    "costEstimate": "1249130",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "1217210",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=47706",
+    "contractDate": "2014-03-27",
+    "completionDate": "14-06-2014",
+    "tenderNoticeNumber": "02/2070/71",
+    "contractNumber": "14/2070/71",
+    "costEstimate": "914419",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "618463",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=45151",
+    "contractDate": "2014-03-12",
+    "completionDate": "",
+    "tenderNoticeNumber": "1",
+    "contractNumber": "DDC/DAD/RTI SWAp/M/BJGL-017",
+    "awardAmount": "4997617",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=45196",
+    "contractDate": "2014-03-12",
+    "completionDate": "",
+    "tenderNoticeNumber": "1",
+    "contractNumber": "DDC/DAD/RTI SWAp/M/SK-019",
+    "costEstimate": "2003332",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "2002023",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=45218",
+    "contractDate": "2014-03-12",
+    "completionDate": "",
+    "tenderNoticeNumber": "1",
+    "contractNumber": "DDC/DAD/RTI SWAp/M/JSR-021",
+    "costEstimate": "2136894",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "2136257",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Bhagawati construction",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=45241",
+    "contractDate": "2014-03-12",
+    "completionDate": "",
+    "tenderNoticeNumber": "1",
+    "contractNumber": "DDC/DAD/RTI SWAp/M/RPGB-022",
+    "costEstimate": "2731841",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "2728971",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=45252",
+    "contractDate": "2014-03-12",
+    "completionDate": "",
+    "tenderNoticeNumber": "1",
+    "contractNumber": "DDC/DAD/RTI SWAp/M/DSD-023",
+    "costEstimate": "1634788",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "1633073",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=45266",
+    "contractDate": "2014-03-12",
+    "completionDate": "",
+    "tenderNoticeNumber": "1",
+    "contractNumber": "DDC/DAD/RTI SWAp/M/GGU-024",
+    "costEstimate": "1608194",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "1297772",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=45282",
+    "contractDate": "2014-03-12",
+    "completionDate": "",
+    "tenderNoticeNumber": "1",
+    "contractNumber": "DDC/DAD/RTI SWAp/M/BSRR-025",
+    "costEstimate": "1756656",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "1749182",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=45296",
+    "contractDate": "2014-03-12",
+    "completionDate": "",
+    "tenderNoticeNumber": "1",
+    "costEstimate": "2408142",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "2315167",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=43958",
+    "contractDate": "2014-03-11",
+    "completionDate": "2014-06-29",
+    "tenderNoticeNumber": "3/070-71",
+    "contractNumber": "20/KTM/W/CRN/070/71",
+    "costEstimate": "575000",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "646082",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Samjhana Nirman Sewa",
+        "SUPPLIER_REGISTRATION_CODE": "2712",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "http://www.ocr.gov.np",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=53154",
+    "contractDate": "2014-03-10",
+    "completionDate": "None",
+    "tenderNoticeNumber": "01/070-071",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=50867",
+    "contractDate": "2014-03-10",
+    "completionDate": "None",
+    "contractNumber": "01/DDC/Baitadi/2070-071",
+    "costEstimate": "882216",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=32053",
+    "contractDate": "2014-03-10",
+    "completionDate": "None",
+    "tenderNoticeNumber": "01/069-070",
+    "contractNumber": "02/DDC/Baitadi/2069-070",
+    "costEstimate": "863192",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=44522",
+    "contractDate": "2014-03-10",
+    "completionDate": "2014-06-29",
+    "tenderNoticeNumber": "3/070-71",
+    "contractNumber": "11/KTM/W/CRN/070/71",
+    "costEstimate": "1633000",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "1476911",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Aanadi Builders",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=68139",
+    "contractDate": "2014-03-07",
+    "completionDate": "2071/02/23",
+    "tenderNoticeNumber": "13/070/071",
+    "contractNumber": "13/070/071",
+    "awardAmount": "925080",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=68162",
+    "contractDate": "2014-03-07",
+    "completionDate": "2014-6-06",
+    "tenderNoticeNumber": "13/070/071",
+    "contractNumber": "13/070/071",
+    "awardAmount": "928080",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Laxmi Electronics Equipments",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=53065",
+    "contractDate": "2014-03-06",
+    "completionDate": "None",
+    "tenderNoticeNumber": "01/070-071",
+    "contractNumber": "01/DCM/Baitadi/070-071",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=53037",
+    "contractDate": "2014-03-06",
+    "completionDate": "None",
+    "tenderNoticeNumber": "01/070-071",
+    "contractNumber": "01/DCM/Baitadi/070-071",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=53053",
+    "contractDate": "2014-03-06",
+    "completionDate": "None",
+    "tenderNoticeNumber": "01/070-071",
+    "contractNumber": "01/DCM/Baitadi/070-071",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=47250",
+    "contractDate": "2014-03-27",
+    "completionDate": "14-06-2014",
+    "tenderNoticeNumber": "02/2070/71",
+    "contractNumber": "16/2070/71",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "540094",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Rajesh Nirman sewa",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=48203",
+    "contractDate": "2014-03-27",
+    "completionDate": "14-06-2014",
+    "tenderNoticeNumber": "02/2070/71",
+    "contractNumber": "18/2070/71",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "727311",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Deep Jyoti nirman sewa",
+        "SUPPLIER_REGISTRATION_CODE": "17939",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "http://www.ocr.gov.np",
+        "SUPPLIER_COUNTRY": "Nepal"
+      },
+      {
+        "SUPPLIER_NAME": "Depjyoti Nirman Sewa",
+        "SUPPLIER_REGISTRATION_CODE": "17939",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "http://www.ocr.gov.np",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=47630",
+    "contractDate": "2014-03-27",
+    "completionDate": "14-06-2014",
+    "tenderNoticeNumber": "02/2070/71",
+    "contractNumber": "19/2070/71",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "510402",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Raj Builders",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=47271",
+    "contractDate": "2014-03-27",
+    "completionDate": "14-06-2014",
+    "tenderNoticeNumber": "02/2070/71",
+    "contractNumber": "20/2070/71",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "314039",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Rajesh Nirman sewa",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=47718",
+    "contractDate": "2014-03-27",
+    "completionDate": "",
+    "tenderNoticeNumber": "02/2070/71",
+    "contractNumber": "21/2070/71",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "456854",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Bastakoti nirman sewa",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=47285",
+    "contractDate": "2014-03-27",
+    "completionDate": "",
+    "tenderNoticeNumber": "02/2070/71",
+    "contractNumber": "22/2070/71",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "357927",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Rajesh Nirman sewa",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=47748",
+    "contractDate": "2014-03-27",
+    "completionDate": "14-06-2014",
+    "tenderNoticeNumber": "02/2070/71",
+    "contractNumber": "25/2070/71",
+    "costEstimate": "1271633",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "646663",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Rajesh Nirman sewa",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=48192",
+    "contractDate": "2014-03-27",
+    "completionDate": "14-06-2014",
+    "tenderNoticeNumber": "02/2070/71",
+    "contractNumber": "27/2070/71",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "453022",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Rajesh Nirman sewa",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=52755",
+    "contractDate": "2014-03-26",
+    "completionDate": "2015-05-14",
+    "tenderNoticeNumber": "03/070/71",
+    "costEstimate": "1260780",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "1421152",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "A.K. Nirman Sewa",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=39981",
+    "contractDate": "2014-03-23",
+    "completionDate": "",
+    "tenderNoticeNumber": "02/2070/71/Revenue",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=39990",
+    "contractDate": "2014-03-23",
+    "completionDate": "",
+    "tenderNoticeNumber": "02/2070/71/Revenue",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=40335",
+    "contractDate": "2014-03-23",
+    "completionDate": "",
+    "tenderNoticeNumber": "02/2070-71",
+    "contractNumber": "13/2070-71",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=40346",
+    "contractDate": "2014-03-23",
+    "completionDate": "",
+    "tenderNoticeNumber": "02/2070-71",
+    "contractNumber": "14/2070-71",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=45436",
+    "contractDate": "2014-03-20",
+    "completionDate": "2014-4-28",
+    "tenderNoticeNumber": "08/09/070/071",
+    "contractNumber": "08/070/071",
+    "awardAmount": "2617945",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Nawa Nepal Nirman Sewa",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=45853",
+    "contractDate": "2014-03-20",
+    "completionDate": "2014-5-29",
+    "tenderNoticeNumber": "11/12/070/071",
+    "contractNumber": "11/070/071",
+    "costEstimate": "158779",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "134660",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "M.K. Construction",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=45867",
+    "contractDate": "2014-03-20",
+    "completionDate": "2014-5-13",
+    "tenderNoticeNumber": "11/12/070/071",
+    "contractNumber": "12/070/071",
+    "costEstimate": "435977",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "299018",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "M.K. Construction",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=45485",
+    "contractDate": "2014-03-16",
+    "completionDate": "2014-05-13",
+    "tenderNoticeNumber": "10/070/071",
+    "contractNumber": "10/070/071",
+    "costEstimate": "1905172",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "1513531",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=45460",
+    "contractDate": "2014-03-13",
+    "completionDate": "2014-4-28",
+    "tenderNoticeNumber": "08/09/070/071",
+    "contractNumber": "09/070/071",
+    "costEstimate": "5226932",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "3783703",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Nawa Nepal Nirman Sewa",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=45138",
+    "contractDate": "2014-03-12",
+    "completionDate": "",
+    "tenderNoticeNumber": "1",
+    "contractNumber": "DDC/DAD/RTI SWAp/M/PB-UM-016",
+    "awardAmount": "5670160",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Jagriti Nirman Sewa Pvt. Ltd.",
+        "SUPPLIER_REGISTRATION_CODE": "76694",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "http://www.ocr.gov.np",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=45128",
+    "contractDate": "2014-03-12",
+    "completionDate": "",
+    "tenderNoticeNumber": "1",
+    "contractNumber": "DDC/DAD/RTI SWAp/M/BBB-015",
+    "awardAmount": "6088898",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Rastra Sewa",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=50524",
+    "contractDate": "2014-02-17",
+    "completionDate": "",
+    "tenderNoticeNumber": "03-06/070/71",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=59763",
+    "contractDate": "2014-02-17",
+    "completionDate": "",
+    "tenderNoticeNumber": "03-06/070/71",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=59753",
+    "contractDate": "2014-02-17",
+    "completionDate": "",
+    "tenderNoticeNumber": "03-06/070/71",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=59749",
+    "contractDate": "2014-02-17",
+    "completionDate": "",
+    "tenderNoticeNumber": "03-06/070/71",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=44609",
+    "contractDate": "2014-02-16",
+    "completionDate": "2014-05-29",
+    "tenderNoticeNumber": "4/070-071",
+    "contractNumber": "23/KTM/W/CRN070/71",
+    "costEstimate": "857000",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "613442",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "P.B.S.T. Nirman Sewa",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=43599",
+    "contractDate": "2014-02-12",
+    "completionDate": "2014-05-27",
+    "tenderNoticeNumber": "2/070-071",
+    "contractNumber": "2/KTM/G/TB/070-71",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "803365",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=43591",
+    "contractDate": "2014-02-12",
+    "completionDate": "2014-05-27",
+    "tenderNoticeNumber": "2/070-071",
+    "contractNumber": "1/KTM/G/TB/070-71",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "803365",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=44287",
+    "contractDate": "2014-02-11",
+    "completionDate": "2014-05-29",
+    "tenderNoticeNumber": "3/070-71",
+    "contractNumber": "5/KTM/W/CRN/070/71",
+    "costEstimate": "1206000",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "895045",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Om Bajrapani Builders and Suppliers Pvt.",
+        "SUPPLIER_REGISTRATION_CODE": "16309",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "http://www.ocr.gov.np",
+        "SUPPLIER_COUNTRY": "Nepal"
+      },
+      {
+        "SUPPLIER_NAME": "Om Bajrapani Bilders and Supplyers Pvt.",
+        "SUPPLIER_REGISTRATION_CODE": "16309",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "http://www.ocr.gov.np",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=44293",
+    "contractDate": "2014-02-11",
+    "completionDate": "2014-05-29",
+    "tenderNoticeNumber": "3/070-71",
+    "contractNumber": "6/KTM/W/CRN/070/71",
+    "costEstimate": "1269000",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "924518",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "U.S. Construction",
+        "SUPPLIER_REGISTRATION_CODE": "97188",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "http://www.ocr.gov.np",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=44550",
+    "contractDate": "2014-02-11",
+    "completionDate": "2014-05-29",
+    "tenderNoticeNumber": "3/070-71",
+    "contractNumber": "14/KTM/W/CRN/070/71",
+    "costEstimate": "4854000",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "2758225",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "U.S. Construction",
+        "SUPPLIER_REGISTRATION_CODE": "97188",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "http://www.ocr.gov.np",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=41958",
+    "contractDate": "2014-02-10",
+    "completionDate": "2015-05-09",
+    "tenderNoticeNumber": "01-02/DDC-01/DTO-070/71",
+    "contractNumber": "GON/W/NCB/Lalitpur/DDC/02/070/71",
+    "awardAmount": "17100321",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "M/S Gauri Parbati Nirman Sewa",
+        "SUPPLIER_REGISTRATION_CODE": "15086",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "http://www.ocr.gov.np",
+        "SUPPLIER_COUNTRY": "Nepal"
+      },
+      {
+        "SUPPLIER_NAME": "Gouri Parbati Nirman Sewa",
+        "SUPPLIER_REGISTRATION_CODE": "15086",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "http://www.ocr.gov.np",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=41933",
+    "contractDate": "2014-02-07",
+    "completionDate": "2015-05-06",
+    "tenderNoticeNumber": "01-02/DDC-01/DTO-070/71",
+    "contractNumber": "GON/W/NCB/Lalitpur/DDC/01/070/71",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "4733782",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=41981",
+    "contractDate": "2014-02-07",
+    "completionDate": "2071-02-30",
+    "tenderNoticeNumber": "01-02/DDC-01/DTO-070/71",
+    "contractNumber": "GON/W/NCB/Lalitpur/DTO/01/070/71",
+    "awardAmount": "4138870",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=45746",
+    "contractDate": "2014-02-06",
+    "completionDate": "",
+    "tenderNoticeNumber": "DDC Revenue/ DDCLalitpur/06/2070-71",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=40682",
+    "contractDate": "2014-02-04",
+    "completionDate": "2014-05-15",
+    "tenderNoticeNumber": "UGDP/MECH/W/NCB-6.02",
+    "contractNumber": "UGDP/MECH/W/NCB-6.02",
+    "awardAmount": "32589607",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=41864",
+    "contractDate": "2014-02-03",
+    "completionDate": "",
+    "tenderNoticeNumber": "4/070/71",
+    "awardAmount": "6923473",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=45753",
+    "contractDate": "2014-01-24",
+    "completionDate": "",
+    "tenderNoticeNumber": "07/070/71",
+    "contractNumber": "GON/G/NCB/Lalitpur/DDC/07/070/71",
+    "costEstimate": "971637",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=41036",
+    "contractDate": "2014-01-24",
+    "completionDate": "2015-06-03",
+    "tenderNoticeNumber": "1/2070-071",
+    "contractNumber": "2/KTM/W/Bridge/070/71",
+    "awardAmount": "18079999",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=45702",
+    "contractDate": "2014-01-23",
+    "completionDate": "",
+    "tenderNoticeNumber": "03-06/DDC Revenue/070-71",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=45710",
+    "contractDate": "2014-01-23",
+    "completionDate": "",
+    "tenderNoticeNumber": "03-06/DDC Revenue/070-71",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=43974",
+    "contractDate": "2014-03-03",
+    "completionDate": "2014-06-29",
+    "tenderNoticeNumber": "3/070-71",
+    "contractNumber": "7/KTM/W/CRN/070/71",
+    "costEstimate": "1581000",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "1064102",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=44390",
+    "contractDate": "2014-03-03",
+    "completionDate": "2014-06-29",
+    "tenderNoticeNumber": "3/070-71",
+    "contractNumber": "10/KTM/W/CRN/070/71",
+    "costEstimate": "1097000",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "669364",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Muchiyel Nirman Sewa",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=44530",
+    "contractDate": "2014-03-03",
+    "completionDate": "2014-06-29",
+    "tenderNoticeNumber": "3/070-71",
+    "contractNumber": "13/KTM/W/CRN/070/71",
+    "costEstimate": "2414000",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "2584109",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Aakrit Nirman Sewa",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=44016",
+    "contractDate": "2014-03-03",
+    "completionDate": "2014-06-29",
+    "tenderNoticeNumber": "3/070-71",
+    "contractNumber": "16/KTM/W/CRN/070/71",
+    "costEstimate": "2146000",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "1102375",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "U.S. Construction",
+        "SUPPLIER_REGISTRATION_CODE": "97188",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "http://www.ocr.gov.np",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=44400",
+    "contractDate": "2014-03-03",
+    "completionDate": "2014-06-29",
+    "tenderNoticeNumber": "3/070-71",
+    "contractNumber": "17/KTM/W/CRN/070/71",
+    "costEstimate": "1717000",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "1039369",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Muchiyel Nirman Sewa",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=44625",
+    "contractDate": "2014-03-03",
+    "completionDate": "2014-06-29",
+    "tenderNoticeNumber": "4/070-071",
+    "contractNumber": "25/KTM/W/CRN/070/71",
+    "costEstimate": "575000",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "649447",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=44649",
+    "contractDate": "2014-02-26",
+    "completionDate": "2014-04-03",
+    "tenderNoticeNumber": "4/070-071",
+    "contractNumber": "26/KTM/ G/WS/070/71",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "1127141",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Prami Enterprises",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=44669",
+    "contractDate": "2014-02-26",
+    "completionDate": "2014-04-03",
+    "tenderNoticeNumber": "4/070-071",
+    "contractNumber": "27/KTM/ G/WS/070/71",
+    "costEstimate": "435500",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "490555",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Prami Enterprises",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=44684",
+    "contractDate": "2014-02-26",
+    "completionDate": "2014-04-03",
+    "tenderNoticeNumber": "4/070-071",
+    "contractNumber": "28/KTM/G/WS/070/71",
+    "costEstimate": "423500",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "477458",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Prami Enterprises",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=44689",
+    "contractDate": "2014-02-26",
+    "completionDate": "2014-04-03",
+    "tenderNoticeNumber": "4/070-071",
+    "contractNumber": "29/KTM/G/GB/070/7",
+    "costEstimate": "862000",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "970670",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Prami Enterprises",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=44698",
+    "contractDate": "2014-02-26",
+    "completionDate": "2014-04-03",
+    "tenderNoticeNumber": "4/070-071",
+    "contractNumber": "30/KTM/G/WS/070/71",
+    "costEstimate": "1089500",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "1227903",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Prami Enterprises",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=44974",
+    "contractDate": "2014-02-25",
+    "completionDate": "2014-04-28",
+    "tenderNoticeNumber": "05,06,07/070/071",
+    "contractNumber": "06/070/071",
+    "costEstimate": "186719",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "164444",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Basant Construction",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=44984",
+    "contractDate": "2014-02-25",
+    "completionDate": "2014-05-13",
+    "tenderNoticeNumber": "05,06,07/070/071",
+    "contractNumber": "07/070/071",
+    "costEstimate": "249786",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "222833",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Basant Construction",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=44926",
+    "contractDate": "2014-02-25",
+    "completionDate": "2014-06-08",
+    "tenderNoticeNumber": "03/070/071",
+    "contractNumber": "03/070/071",
+    "costEstimate": "2480433",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "2171868",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Jana Sewa Construction Pvt. Ltd.",
+        "SUPPLIER_REGISTRATION_CODE": "15042",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "http://www.ocr.gov.np",
+        "SUPPLIER_COUNTRY": "Nepal"
+      },
+      {
+        "SUPPLIER_NAME": "Jansewa Construction Pvt. Ltd.",
+        "SUPPLIER_REGISTRATION_CODE": "15042",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "http://www.ocr.gov.np",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=44007",
+    "contractDate": "2014-02-25",
+    "completionDate": "2014-06-03",
+    "tenderNoticeNumber": "3/070-71",
+    "contractNumber": "15/KTM/W/CRN/070/71",
+    "costEstimate": "1202000",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "569068",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Satyaswor",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      },
+      {
+        "SUPPLIER_NAME": "Amira",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=44957",
+    "contractDate": "2014-02-23",
+    "completionDate": "2014-04-28",
+    "tenderNoticeNumber": "05,06,07/070/071",
+    "contractNumber": "05/070/071",
+    "costEstimate": "209050",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "210482",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Syangja Alam Devi Nirman Sewa",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=44267",
+    "contractDate": "2014-02-23",
+    "completionDate": "2014-05-29",
+    "tenderNoticeNumber": "3/070-71",
+    "contractNumber": "4/KTM/W/CRN070/71",
+    "costEstimate": "901000",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "741131",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=45125",
+    "contractDate": "2014-02-21",
+    "completionDate": "2014-06-29",
+    "tenderNoticeNumber": "bo 01/2070/071",
+    "contractNumber": "Bo 01/2070/071",
+    "awardAmount": "15399970",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=50469",
+    "contractDate": "2014-02-17",
+    "completionDate": "",
+    "tenderNoticeNumber": "03-06/070/71",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=50489",
+    "contractDate": "2014-02-17",
+    "completionDate": "",
+    "tenderNoticeNumber": "03-06/070/71",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=45721",
+    "contractDate": "2014-01-23",
+    "completionDate": "",
+    "tenderNoticeNumber": "03-06/DDC Revenue/070-71",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=43164",
+    "contractDate": "2014-01-22",
+    "completionDate": "2014-07-10",
+    "tenderNoticeNumber": "6/070/71",
+    "contractNumber": "4/DLSO/NUW/BLDG/070/71",
+    "costEstimate": "4071501",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "2785818",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Uichen Construction",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=41256",
+    "contractDate": "2014-01-22",
+    "completionDate": "2015-04-30",
+    "tenderNoticeNumber": "3/070/71",
+    "contractNumber": "1/P.N./NUW/Bldg/070/71",
+    "costEstimate": "2592898",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "1988374",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Uichen Construction",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=41271",
+    "contractDate": "2014-01-22",
+    "completionDate": "2015-04-30",
+    "tenderNoticeNumber": "3/070/71",
+    "contractNumber": "2/P.N./NUW/Bldg/070/71",
+    "costEstimate": "2600552",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "1980779",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Uichen Construction",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=41982",
+    "contractDate": "2014-01-17",
+    "completionDate": "2014-07-15",
+    "tenderNoticeNumber": "4/070/71",
+    "contractNumber": "1/Bagbani/NUW/070/71",
+    "costEstimate": "2372770",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "1067815",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=41983",
+    "contractDate": "2014-01-17",
+    "completionDate": "2014-07-15",
+    "tenderNoticeNumber": "4/070/71",
+    "contractNumber": "2/Bagbani/NUW/070/71",
+    "costEstimate": "762296",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "543847",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Shree Krishna Nirman Sewa",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=41992",
+    "contractDate": "2014-01-17",
+    "completionDate": "2014-07-15",
+    "tenderNoticeNumber": "4/070/71",
+    "contractNumber": "3/Bagbani/NUW/070/71",
+    "costEstimate": "1696221",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "959783",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Rinka Construction",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=43460",
+    "contractDate": "2014-01-17",
+    "completionDate": "",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=37430",
+    "contractDate": "2014-01-12",
+    "completionDate": "2015-04-10",
+    "tenderNoticeNumber": "RTISwap/NCB/MAK-16/BRI/069-70",
+    "contractNumber": "RTISwap/NCB/MAK-16/BRI/069-70",
+    "awardAmount": "27117756",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=38945",
+    "contractDate": "2014-01-12",
+    "completionDate": "2015-04-10",
+    "tenderNoticeNumber": "RTISwap/NCB/MAK-16/069-70",
+    "awardAmount": "27117756",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=41118",
+    "contractDate": "2014-01-09",
+    "completionDate": "2015-04-07",
+    "tenderNoticeNumber": "1/2070-071",
+    "awardAmount": "10950564",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=44237",
+    "contractDate": "2014-01-06",
+    "completionDate": "2014-05-29",
+    "tenderNoticeNumber": "3/070-71",
+    "contractNumber": "21/KTM/W/CRN/070/71",
+    "costEstimate": "581000",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "751935",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=41093",
+    "contractDate": "2013-12-31",
+    "completionDate": "2014-07-04",
+    "tenderNoticeNumber": "1/2070-071",
+    "awardAmount": "5024445",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=43556",
+    "contractDate": "2013-12-22",
+    "completionDate": "2014/4/13",
+    "tenderNoticeNumber": "2/071/072",
+    "contractNumber": "02/070/071",
+    "costEstimate": "692033",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "777385",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Basant Construction",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=31747",
+    "contractDate": "2013-12-16",
+    "completionDate": "2014/03/14",
+    "tenderNoticeNumber": "11/12/067/070",
+    "contractNumber": "12/069/070",
+    "costEstimate": "1149577",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "1174835",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=39492",
+    "contractDate": "2013-12-03",
+    "completionDate": "2072-02-04",
+    "contractNumber": "CTP-31/069/70",
+    "awardAmount": "7194222",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=40067",
+    "contractDate": "2013-12-01",
+    "completionDate": "N/A",
+    "tenderNoticeNumber": "2/Revenue/070/71",
+    "contractNumber": "1_DDCBKT_R_070/71",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=40076",
+    "contractDate": "2013-12-01",
+    "completionDate": "N/A",
+    "tenderNoticeNumber": "2/Revenue/070/71",
+    "contractNumber": "2_DDCBKT_R_070/71",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=6202",
+    "contractDate": "2013-11-07",
+    "completionDate": "1-1-2011",
+    "tenderNoticeNumber": "10/068-69/Arghakhanchi",
+    "contractNumber": "GON/W/NCB/ARG-09/RI/068/69",
+    "costEstimate": "3666864",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "50000",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=31895",
+    "contractDate": "2013-11-07",
+    "completionDate": "1-1-2016",
+    "tenderNoticeNumber": "DTO/04-10/69/70",
+    "contractNumber": "10/069/70",
+    "costEstimate": "2542303",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "20000000",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=10918",
+    "contractDate": "2013-11-07",
+    "completionDate": "1-1-2013",
+    "tenderNoticeNumber": "56/DDC/ARG/TB/2068-069",
+    "contractNumber": "56/DDC/ARG/TB/2068-069",
+    "costEstimate": "414667",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "560000",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=16069",
+    "contractDate": "2013-11-07",
+    "completionDate": "1-1-2013",
+    "tenderNoticeNumber": "56-A/DDC/Arg/TB068/69",
+    "contractNumber": "56-A/DDC/ARG/TB 2068/069",
+    "costEstimate": "414667",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "560000",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=21032",
+    "contractDate": "2013-11-07",
+    "completionDate": "2-2-2013",
+    "tenderNoticeNumber": "CTP- 1(4)/ARG/069/70",
+    "contractNumber": "CTP- 1(4)/ARG/069/70",
+    "awardAmount": "560000",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=12869",
+    "contractDate": "2013-11-07",
+    "completionDate": "1-3-2013",
+    "tenderNoticeNumber": "57-58/2068/069 Arghakhanchi",
+    "contractNumber": "RAIDP/W/NCB/ARG-1.3/RI/2068-69 (57)",
+    "awardAmount": "560000",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=29423",
+    "contractDate": "2013-11-07",
+    "completionDate": "1-3-2013",
+    "tenderNoticeNumber": "11/069/70",
+    "contractNumber": "11/069/70",
+    "costEstimate": "3570575",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "560000",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=31141",
+    "contractDate": "2013-11-07",
+    "completionDate": "December 31, 2013",
+    "tenderNoticeNumber": "01/069/70, RAIDP",
+    "contractNumber": "RAIDP/G/NCB/MT/30/069-070",
+    "awardAmount": "4516666",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=38380",
+    "contractDate": "2013-11-06",
+    "completionDate": "1-1-2015",
+    "tenderNoticeNumber": "19Nrodge/069/70",
+    "awardAmount": "27200000",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=21336",
+    "contractDate": "2013-11-05",
+    "completionDate": "2012-11-5",
+    "tenderNoticeNumber": "01TBSWAP-FP",
+    "contractNumber": "01TBSWAP-FP 2069/070",
+    "awardAmount": "4870520",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=40381",
+    "contractDate": "2013-10-29",
+    "completionDate": "2014-07-15",
+    "tenderNoticeNumber": "1/070/71",
+    "awardAmount": "1003000",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Shri Vyas and Sewa",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=40248",
+    "contractDate": "2013-10-29",
+    "completionDate": "End of Kartik",
+    "tenderNoticeNumber": "01/DDC/Banke/070/071",
+    "contractNumber": "01/Maintenance/DDC banke/070/071",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "942727",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Suraj Construction",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=34457",
+    "contractDate": "2013-10-22",
+    "completionDate": "2071-09-27",
+    "tenderNoticeNumber": "CTP 26-29/069/70",
+    "contractNumber": "CTP 29/069/70",
+    "awardAmount": "10900000",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=40134",
+    "contractDate": "2013-10-18",
+    "completionDate": "February, 2014",
+    "tenderNoticeNumber": "03/2070/071",
+    "contractNumber": "01/TB/2070/071",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "3990000",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=40019",
+    "contractDate": "2013-10-17",
+    "completionDate": "2017-02-09",
+    "tenderNoticeNumber": "01/070/071",
+    "contractNumber": "01/070/071",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "2134070",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Miraj Construction",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=40211",
+    "contractDate": "2013-09-22",
+    "completionDate": "December 2, 2014",
+    "tenderNoticeNumber": "DANG/01/070-71",
+    "contractNumber": "LRBP/GRJE/BDE/02",
+    "awardAmount": "11760072",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=40197",
+    "contractDate": "2013-09-22",
+    "completionDate": "",
+    "tenderNoticeNumber": "DANG/01/070-71",
+    "contractNumber": "LRBP/HPR/BDE/01",
+    "awardAmount": "18695087",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Suraj",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=39121",
+    "contractDate": "2013-09-20",
+    "completionDate": "2071/03/30",
+    "tenderNoticeNumber": "1_DDC_AYA_2070/71",
+    "contractNumber": "Aya_3_069/70",
+    "awardAmount": "1825125",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Sworup Nirman Sewa",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=38894",
+    "contractDate": "2013-09-12",
+    "completionDate": "2014-09-11",
+    "tenderNoticeNumber": "RTISwap/NCB/MAK-06/BRI/069-70",
+    "contractNumber": "RTISwap/NCB/MAK-06/BRI/069-70",
+    "awardAmount": "9515260",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=39138",
+    "contractDate": "2013-09-09",
+    "completionDate": "2071/03/30",
+    "tenderNoticeNumber": "1_DDC_AYA_2070/71",
+    "contractNumber": "Aya_5_069/70",
+    "awardAmount": "605000",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Krishna Prasad Timilsina",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=39435",
+    "contractDate": "2013-09-01",
+    "completionDate": "Cancel",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=38006",
+    "contractDate": "2013-09-01",
+    "completionDate": "Cancel",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=37983",
+    "contractDate": "2013-09-01",
+    "completionDate": "Cancel",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=39809",
+    "contractDate": "2013-08-29",
+    "completionDate": "2014-07-16",
+    "tenderNoticeNumber": "1(069/70)",
+    "contractNumber": "1(069/70)",
+    "awardAmount": "19199999",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=31741",
+    "contractDate": "2013-08-19",
+    "completionDate": "2071/03/31",
+    "tenderNoticeNumber": "11/12/067/070",
+    "contractNumber": "11/069/070",
+    "costEstimate": "2652275",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "2169176",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Miraj Construction",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=35174",
+    "contractDate": "2013-08-18",
+    "completionDate": "2071 Ashadh Last",
+    "tenderNoticeNumber": "09/2069-070",
+    "contractNumber": "Rajashwa 01/2069-070",
+    "awardAmount": "953750",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Amrit Kayastha",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=29132",
+    "contractDate": "2013-08-14",
+    "completionDate": "2014-11-13",
+    "contractNumber": "EoI/NCB/MAK-07/BLD/069-70",
+    "awardAmount": "32898213",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=29122",
+    "contractDate": "2013-08-14",
+    "completionDate": "2014-11-13",
+    "tenderNoticeNumber": "EoI/NCB/MAK-07/BLD/069-70",
+    "contractNumber": "EoI/NCB/MAK-07/BLD/069-70",
+    "awardAmount": "32898213",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Shankar Mali Nirman Sewa",
+        "SUPPLIER_REGISTRATION_CODE": "7835",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "http://www.ocr.gov.np",
+        "SUPPLIER_COUNTRY": "Nepal"
+      },
+      {
+        "SUPPLIER_NAME": "SHANKAR MALI NIRMAN SEWA PVT.LTD.",
+        "SUPPLIER_REGISTRATION_CODE": "7835",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "http://www.ocr.gov.np",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=35227",
+    "contractDate": "2013-08-12",
+    "completionDate": "2071 Ashadh Last",
+    "tenderNoticeNumber": "09/2069-070",
+    "contractNumber": "Rajashwa 05/2069-070",
+    "awardAmount": "6635117",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Lapha Construction",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=39609",
+    "contractDate": "2013-08-11",
+    "completionDate": "2071/03/30",
+    "tenderNoticeNumber": "1/Revenue/070/71",
+    "awardAmount": "9378771",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=39564",
+    "contractDate": "2013-07-31",
+    "completionDate": "2071 Ashadh Last",
+    "tenderNoticeNumber": "09/2069-070",
+    "contractNumber": "Rajashwa 08/2069-070 Gha",
+    "awardAmount": "496000",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Chhimkeshwari Nirman Sewa",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=39552",
+    "contractDate": "2013-07-30",
+    "completionDate": "2071 Ashadh Last",
+    "tenderNoticeNumber": "09/2069-070",
+    "awardAmount": "184500",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=30632",
+    "contractDate": "2013-07-30",
+    "completionDate": "2070/03/25",
+    "tenderNoticeNumber": "4_DDC_BKT_2069/70",
+    "contractNumber": "DDC_BKT_KS_2069/70_12",
+    "costEstimate": "436047",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "467858",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Suryavinayak Ganesh Nirman Sewa",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=39502",
+    "contractDate": "2013-07-29",
+    "completionDate": "None",
+    "tenderNoticeNumber": "09/2069-070",
+    "contractNumber": "Rajashwa 03/2069-070",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=33002",
+    "contractDate": "2013-07-28",
+    "completionDate": "28 April, 2015",
+    "tenderNoticeNumber": "LRBP/ACHHAM/69-70/w/01",
+    "contractNumber": "LRBP/ACHHAM/69-70/w/02",
+    "awardAmount": "25610924",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Thegim Construction Company",
+        "SUPPLIER_REGISTRATION_CODE": "53170",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "http://www.ocr.gov.np",
+        "SUPPLIER_COUNTRY": "Nepal"
+      },
+      {
+        "SUPPLIER_NAME": "Budhiganga",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=33023",
+    "contractDate": "2013-07-28",
+    "completionDate": "28 April, 2015",
+    "tenderNoticeNumber": "LRBP/ACHHAM/69-70/w/01",
+    "contractNumber": "LRBP/ACHHAM/69-70/w/01",
+    "awardAmount": "56315766",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Nande Gada Construction",
+        "SUPPLIER_REGISTRATION_CODE": "59803",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "http://www.ocr.gov.np",
+        "SUPPLIER_COUNTRY": "Nepal"
+      },
+      {
+        "SUPPLIER_NAME": "Tulsi Durga",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      },
+      {
+        "SUPPLIER_NAME": "Nandegada Construction",
+        "SUPPLIER_REGISTRATION_CODE": "59803",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "http://www.ocr.gov.np",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=38473",
+    "contractDate": "2013-07-28",
+    "completionDate": "28 Oct, 2013",
+    "contractNumber": "RAIDP/G/NCB/Achham/DDC/02/TB/2060/070",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "593302",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=38486",
+    "contractDate": "2013-07-28",
+    "completionDate": "28 Oct, 2013",
+    "tenderNoticeNumber": "RAIDP/G/NCB/Achham/DDC/02/TB/2069/070",
+    "contractNumber": "RAIDP/G/NCB/Achham/DDC/03/TB/2060/070",
+    "costEstimate": "478669",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "519088",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=38489",
+    "contractDate": "2013-07-28",
+    "completionDate": "28 Oct, 2013",
+    "contractNumber": "RAIDP/G/NCB/Achham/DDC/04/TB/2060/070",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "649121",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=39520",
+    "contractDate": "2013-07-28",
+    "completionDate": "None",
+    "tenderNoticeNumber": "09/2069-070",
+    "contractNumber": "Rajashwa 04/2069-070",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=39536",
+    "contractDate": "2013-07-28",
+    "completionDate": "None",
+    "tenderNoticeNumber": "09/2069-070",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=39539",
+    "contractDate": "2013-07-28",
+    "completionDate": "None",
+    "tenderNoticeNumber": "09/2069-070",
+    "contractNumber": "Rajashwa 08/2069-070 kha",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=31626",
+    "contractDate": "2013-07-25",
+    "completionDate": "2014-07-15",
+    "tenderNoticeNumber": "9/069/70",
+    "contractNumber": "3/Revenue/NUW/070/71",
+    "awardAmount": "2005000",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Bachchhaladevi Nirman Sewa",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=21829",
+    "contractDate": "2013-07-24",
+    "completionDate": "",
+    "tenderNoticeNumber": "03/2069-70",
+    "contractNumber": "DDC/NAW-2/069-70",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=35288",
+    "contractDate": "2013-07-18",
+    "completionDate": "2071 Ashadh Last",
+    "tenderNoticeNumber": "09/2069-070",
+    "contractNumber": "Rajashwa 10/2069-070",
+    "awardAmount": "468000",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Ajambari Nirman Sewa",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=35262",
+    "contractDate": "2013-07-16",
+    "completionDate": "2071 Ashadh Last",
+    "tenderNoticeNumber": "09/2069-070",
+    "contractNumber": "Rajashwa 07/2069-070",
+    "awardAmount": "6500000",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Amrit Kayastha",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=39032",
+    "contractDate": "2013-07-16",
+    "completionDate": "",
+    "tenderNoticeNumber": "04-07/DDC Revenue/069-70",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=39015",
+    "contractDate": "2013-07-16",
+    "completionDate": "",
+    "tenderNoticeNumber": "04-07/DDC Revenue/069-70",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=38999",
+    "contractDate": "2013-07-16",
+    "completionDate": "",
+    "tenderNoticeNumber": "04-07/DDC Revenue/069-70",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=38983",
+    "contractDate": "2013-07-16",
+    "completionDate": "",
+    "tenderNoticeNumber": "04-07/DDC Revenue/069-70",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=31585",
+    "contractDate": "2013-07-15",
+    "completionDate": "2014-07-15",
+    "tenderNoticeNumber": "9/069/70",
+    "contractNumber": "01/Revenue/NUW/070/71",
+    "awardAmount": "16666666",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "H.R.S. Rajdhani Construction",
+        "SUPPLIER_REGISTRATION_CODE": "76000",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "http://www.ocr.gov.np",
+        "SUPPLIER_COUNTRY": "Nepal"
+      },
+      {
+        "SUPPLIER_NAME": "HRS Rajdhani Construction",
+        "SUPPLIER_REGISTRATION_CODE": "76000",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "http://www.ocr.gov.np",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=31576",
+    "contractDate": "2013-07-15",
+    "completionDate": "2014-10-16",
+    "tenderNoticeNumber": "1/069/70",
+    "contractNumber": "1/NUW/NCB/BLDG/069/70",
+    "awardAmount": "15752758",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Siddhartha Construction",
+        "SUPPLIER_REGISTRATION_CODE": "27714",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "http://www.ocr.gov.np",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=38530",
+    "contractDate": "2013-07-15",
+    "completionDate": "cancel",
+    "tenderNoticeNumber": "10/069/70",
+    "contractNumber": "5/Revenue/NUW/070/71",
+    "awardAmount": "0",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=39109",
+    "contractDate": "2013-07-15",
+    "completionDate": "2070/03/31",
+    "tenderNoticeNumber": "1_DDC_AYA_2070/71",
+    "contractNumber": "Aya_2_069/70",
+    "awardAmount": "1313313",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=39123",
+    "contractDate": "2013-07-15",
+    "completionDate": "2071/03/30",
+    "tenderNoticeNumber": "1_DDC_AYA_2070/71",
+    "contractNumber": "Aya_4_069/70",
+    "awardAmount": "710100",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Deepak Khatri",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=39153",
+    "contractDate": "2013-07-15",
+    "completionDate": "2071/03/30",
+    "tenderNoticeNumber": "1_DDC_AYA_2070/71",
+    "contractNumber": "Aya_6_069/70",
+    "awardAmount": "1450151",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Subodh Chandra Shah",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": ""
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=38525",
+    "contractDate": "2013-07-14",
+    "completionDate": "2014-07-15",
+    "tenderNoticeNumber": "10/069/70",
+    "contractNumber": "4/Revenue/NUW/070/71",
+    "awardAmount": "2002222",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Tarakeshwor Construction",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=31689",
+    "contractDate": "2013-07-14",
+    "completionDate": "2071-09-29",
+    "tenderNoticeNumber": "CTP 21-25/069/70",
+    "contractNumber": "CTP-21/069/70",
+    "awardAmount": "13585000",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=37904",
+    "contractDate": "2013-07-14",
+    "completionDate": "2072-09-29",
+    "tenderNoticeNumber": "CTP 30/069-70",
+    "contractNumber": "CTP-30/069-70",
+    "awardAmount": "51966713",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Mana",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=35501",
+    "contractDate": "2013-07-14",
+    "completionDate": "2071-03-29",
+    "tenderNoticeNumber": "MM 1-2/069/70",
+    "contractNumber": "MM-1/06-70",
+    "awardAmount": "6767000",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Nilgiri Nirman Sewa Pvt. Ltd.",
+        "SUPPLIER_REGISTRATION_CODE": "14238",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "http://www.ocr.gov.np",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=35514",
+    "contractDate": "2013-07-14",
+    "completionDate": "2071-03-29",
+    "tenderNoticeNumber": "MM 1-2/069/70",
+    "contractNumber": "MM-2/069/70",
+    "awardAmount": "8900000",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Nilgiri Nirman Sewa Pvt. Ltd.",
+        "SUPPLIER_REGISTRATION_CODE": "14238",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "http://www.ocr.gov.np",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=32006",
+    "contractDate": "2013-07-14",
+    "completionDate": "2014-07-16",
+    "tenderNoticeNumber": "5(069/70)",
+    "contractNumber": "5(069/70)",
+    "awardAmount": "2800145",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Dudharaj Nirman Sewa",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=31997",
+    "contractDate": "2013-07-14",
+    "completionDate": "2014-07-16",
+    "tenderNoticeNumber": "6(069/70)",
+    "contractNumber": "6(069/70)",
+    "awardAmount": "181000",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "OK Rice Mill",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=35184",
+    "contractDate": "2013-07-14",
+    "completionDate": "2071 Ashadh Last",
+    "tenderNoticeNumber": "09/2069-070",
+    "contractNumber": "Rajashwa 02/2069-070",
+    "awardAmount": "675090",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Chandra Bahadur Thapa",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=35284",
+    "contractDate": "2013-07-14",
+    "completionDate": "2071 Ashadh Last",
+    "tenderNoticeNumber": "09/2069-070",
+    "contractNumber": "Rajashwa 09/2069-070",
+    "awardAmount": "681363",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Rinka Construction",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=31252",
+    "contractDate": "2013-07-12",
+    "completionDate": "2072/03/31",
+    "awardAmount": "2727000",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=34414",
+    "contractDate": "2013-07-11",
+    "completionDate": "2071-06-26",
+    "tenderNoticeNumber": "CTP 26-29/069/70",
+    "contractNumber": "CTP 26/069/70",
+    "awardAmount": "8600000",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=34430",
+    "contractDate": "2013-07-11",
+    "completionDate": "2071-09-26",
+    "tenderNoticeNumber": "CTP 26-29/069/70",
+    "contractNumber": "CTP 27/069/70",
+    "awardAmount": "17133250",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=34434",
+    "contractDate": "2013-07-11",
+    "completionDate": "2071-06-26",
+    "tenderNoticeNumber": "CTP 26-29/069/70",
+    "contractNumber": "CTP 28/069/70",
+    "awardAmount": "7666919",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=34677",
+    "contractDate": "2013-07-09",
+    "completionDate": "January 8, 2014 (2070/09/24)",
+    "tenderNoticeNumber": "08/2069-070",
+    "contractNumber": "DDC/Tan/TB-CTP/13/2069-070",
+    "awardAmount": "7545000",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Mana",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      },
+      {
+        "SUPPLIER_NAME": "Annapurna",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=31604",
+    "contractDate": "2013-07-08",
+    "completionDate": "2014-07-15",
+    "tenderNoticeNumber": "9/069/70",
+    "contractNumber": "2/Revenue/NUW/070/71",
+    "awardAmount": "1020000",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Shiva Shanker Nirman Sewa",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=31723",
+    "contractDate": "2013-07-08",
+    "completionDate": "2071-09-23",
+    "tenderNoticeNumber": "CTP 21-25/069/70",
+    "contractNumber": "CTP-24/069/70",
+    "awardAmount": "9666666",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=32924",
+    "contractDate": "2013-07-05",
+    "completionDate": "End of asad 2071",
+    "tenderNoticeNumber": "1/Revenue/2069/070",
+    "contractNumber": "01/Revenue/069/070",
+    "awardAmount": "26100100",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Shivam Traders",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=32927",
+    "contractDate": "2013-07-05",
+    "completionDate": "End of Aasad 2071",
+    "tenderNoticeNumber": "1/Revenue/2069/070",
+    "contractNumber": "02/069/070",
+    "awardAmount": "5200000",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Sapana Traders",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=31738",
+    "contractDate": "2013-07-05",
+    "completionDate": "2071-09-20",
+    "tenderNoticeNumber": "CTP 21-25/069/70",
+    "contractNumber": "CTP-25/069/70",
+    "awardAmount": "13368203",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=35992",
+    "contractDate": "2013-07-05",
+    "completionDate": "2071-06-10",
+    "tenderNoticeNumber": "01/Shanti/069/70",
+    "costEstimate": "3169676",
+    "awardAmount": "3579770",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Timilsina Construction",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=34887",
+    "contractDate": "2013-07-04",
+    "completionDate": "2071-03-20",
+    "tenderNoticeNumber": "09/2069/70",
+    "costEstimate": "2521440",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "2078804",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=28049",
+    "contractDate": "2013-07-04",
+    "completionDate": "2014-6-15",
+    "tenderNoticeNumber": "DDC/Sunsari/Sera Bridge/NCB/002",
+    "contractNumber": "DDC/Sunsari/Sera Bridge/NCB/002",
+    "awardAmount": "18869400",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Brightbull",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      },
+      {
+        "SUPPLIER_NAME": "Sitaula",
+        "SUPPLIER_REGISTRATION_CODE": "",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=29892",
+    "contractDate": "2013-07-03",
+    "completionDate": "2014-10-02",
+    "tenderNoticeNumber": "8/069/70",
+    "contractNumber": "8/NUW/NGB/BRI/069/70",
+    "awardAmount": "12244045",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=32625",
+    "contractDate": "2013-07-03",
+    "completionDate": "2071-03-20",
+    "tenderNoticeNumber": "08/069/70",
+    "contractNumber": "04/069/70",
+    "costEstimate": "2521440",
+    "costEstateCurrency": "NPR",
+    "awardAmount": "2260098",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=37887",
+    "contractDate": "2013-07-02",
+    "completionDate": "2013-07-02",
+    "tenderNoticeNumber": "1(069/70)",
+    "contractNumber": "1(069/70)",
+    "awardAmount": "1",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=37897",
+    "contractDate": "2013-07-02",
+    "completionDate": "2013-07-02",
+    "tenderNoticeNumber": "2(069/70)",
+    "contractNumber": "2(069/70)",
+    "awardAmount": "1",
+    "awardAmountCurrency": "NPR",
+    "suppliers": []
+  },
+  {
+    "documentURL": "http://www.edolidar.gov.np/tender_details.php?tid=31713",
+    "contractDate": "2013-07-02",
+    "completionDate": "2071-09-17",
+    "tenderNoticeNumber": "CTP 21-25/069/70",
+    "contractNumber": "CTP-23/069/70",
+    "awardAmount": "12900000",
+    "awardAmountCurrency": "NPR",
+    "suppliers": [
+      {
+        "SUPPLIER_NAME": "Nilgiri Nirman Sewa Pvt. Ltd.",
+        "SUPPLIER_REGISTRATION_CODE": "14238",
+        "SUPPLIER_REGISTRATION_CODE_SOURCE": "http://www.ocr.gov.np",
+        "SUPPLIER_COUNTRY": "Nepal"
+      }
+    ]
+  }
+]

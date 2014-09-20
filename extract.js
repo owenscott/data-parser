@@ -15,6 +15,7 @@ var mapKey = function(key) {
 
 	var mapping = {
 		TENDERNOTICENUMBER: 'tenderNoticeNumber',
+		CONTRACTNUMBER: 'contractNumber',
 		STATUS: 'status',
 		URL: 'documentURL',
 		COSTESTIMATE: 'costEstimate',
@@ -105,7 +106,7 @@ mongoClient.connect('mongodb://' + conf.mongoHost + ':' + conf.mongoPort + '/' +
 			finalSuppliers = _.uniq(finalSuppliers, function(m) {return JSON.stringify(m)});
 
 
-
+			console.log(record);
 
 			tempRecord.suppliers = finalSuppliers;
 			data.push(tempRecord);
