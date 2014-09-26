@@ -290,7 +290,8 @@ combineDataByHash = function() {
 		badRecords = [],
 		results = [],
 		shortResults = [],
-		mergedResults = [];
+		mergedResults = [],
+		shortCounter = 0;
 
 	logger.info('==========================================');
 	logger.info('Done processing data files. ' + jsonData.length + ' records found.');
@@ -362,8 +363,9 @@ combineDataByHash = function() {
 				lengthenedRecord[1][key] = '';
 			}
 		})
-		if (conf.includeShortResults) {
+		if (conf.includeShortResults && shortCounter < conf.shortBatchSize) {
 			results.push(lengthenedRecord);
+			shortCounter ++;
 		}
 	})
 

@@ -27,7 +27,8 @@ async.each(PREVIOUS_DBS,
 					var temphash = makehash(record.scraped);
 
 					if(!exclude(record) ) {
-						completedContractHashes.push(record.scraped.hash);
+						// completedContractHashes.push(record.scraped.hash);
+						completedContractHashes.push(temphash);
 						if (!record.scraped.hash) {
 							console.log('warning: record with no hash')
 						}
@@ -68,8 +69,11 @@ function write () {
 
 		jsonData.forEach(function(record) {
 			var temphash = makehash(record.scraped);
-			if (!_.contains(completedContractHashes, record.scraped.hash)) {
+			// if (!_.contains(completedContractHashes, record.scraped.hash)) {
+				if (!_.contains(completedContractHashes, temphash)) {
+
 				if (!record.scraped.hash) {
+
 					console.log('warning: new record with no hash')
 				}
 				finalData.push(record);
