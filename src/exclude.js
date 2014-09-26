@@ -42,6 +42,10 @@ module.exports = function(record) {
 		return true;
 	}
 
+	if (record.meta.status === 'error') {
+		return false;
+	}
+
 	if (record.meta.status === 'open') {
 		return true;
 	}

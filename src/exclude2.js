@@ -42,6 +42,10 @@ module.exports = function(record) {
 		return true;
 	}
 
+	if (record.meta.status === 'error') {
+		return false;
+	}
+
 	if (record.data.keyValuePairs.merge.NOTES && record.data.keyValuePairs.merge.NOTES.value === 'NPR') {
 		return true;
 	}
