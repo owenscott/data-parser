@@ -1,8 +1,8 @@
 {
-	"previousContractDBs": ["contractqab1", "contractqab2", "contractqab3", "contractqab4", "contractqab5", "contractqab6", "contractqab7"],
-	"currentContractDB": "contractqab8",
+	"previousContractDBs": ["contractqab1", "contractqab2", "contractqab3", "contractqab4", "contractqab5", "contractqab6", "contractqab7", "contractqab8"],
+	"currentContractDB": "contractqab9",
 	"includeShortResults": true,
 	"includeOpenResults": false,
 	"sanitizeUnicode": true,
-	"shortBatchSize": 300
+	"shortBatchSize": 500
 }
