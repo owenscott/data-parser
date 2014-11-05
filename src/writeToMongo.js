@@ -10,7 +10,7 @@ var conf = JSON.parse(fs.readFileSync('./conf.json').toString());
 var PREVIOUS_DBS = conf.awardCodedDBs,
 	OUTPUT_DB = conf.awardCurrentDB;
 
-var COLLECTION = 'awards';
+var COLLECTION = 'contracts';
 
 var completedContractHashes = [];
 

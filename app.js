@@ -302,10 +302,67 @@ var combineDataByHash = function() {
 		console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
 
 		logger.info(mergedResults.length + ' records will be written into the final dataset.');
+
+		logger.info('----------------------------------------------------------------------')
+		logger.info('But first...we must shadily convert the merged supplier data to locations');
+		mergedResults.forEach(function(record) {
+			var suppliers = record.data.arrays.originals.suppliers;
+			var locations = [[],[]];
+			suppliers.forEach(function(setOfSuppliers, i) {
+				setOfSuppliers.forEach(function(supplier) {
+					locations[i].push(makeSupplierIntoString(supplier));							
+
+				})
+			})
+			locations[0] = _.uniq(locations[0]);
+			locations[1] = _.uniq(locations[1]);
+			var mergedLocations = _.intersection(locations[0], locations[1]);
+			console.log(locations);
+			console.log(mergedLocations);
+			console.log('===================')
+
+			//put it into the record
+			record.data.arrays.merge['locations'] = mergedLocations;
+			record.data.arrays.originals['locations']= locations;
+
+
+			// process.exit();
+
+		})
+
+
+
 		//TODO: need to make sure aren't previously coded
 		writeToMongo(mergedResults, logger);
 	});
 
+}
+
+
+function makeSupplierIntoString(supplier) {
+	var supplierString = '';
+	var LOCATION_KEYS = ['ADM1', 'ADM2', 'ADM3', 'ADM4']
+	var locationString = '';
+
+	supplierString += 'Supplier: ' + (supplier.SUPPLIER_NAME || 'Unknown');
+
+	if (supplier.SUPPLIER_REGISTRATION_CODE) {
+		supplierString += ', RegistrationCode:' + supplier.SUPPLIER_REGISTRATION_CODE;
+	}
+
+	for (var i = 0; i < LOCATION_KEYS.length; i++) {
+		
+		if (supplier[LOCATION_KEYS[i]]) {
+			locationString = locationString + supplier[LOCATION_KEYS[i]] + '/'
+		}
+	}
+
+	if (locationString) {
+		supplierString += ', Location: ' + locationString;
+	}
+
+
+	return supplierString;
 }
 
 
