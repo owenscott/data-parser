@@ -322,9 +322,19 @@ var combineDataByHash = function() {
 			console.log('===================')
 
 			//put it into the record
-			record.data.arrays.merge['locations'] = mergedLocations;
+			mergedLocations.forEach(function(mergedLocation) {
+				record.data.arrays.merge.locations = record.data.arrays.merge.locations || [];
+				record.data.arrays.merge.locations.push({
+					"match" : true,
+					"source" : "MATCH",
+					"value" : mergedLocation,
+					"cleanValue" : "",
+					"deleted" : false
+				})
+			})
+			// record.data.arrays.merge['locations'] = mergedLocations;
 			record.data.arrays.originals['locations']= locations;
-
+			record.data.arrays.merge.locations = record.data.arrays.merge.locations || [];
 
 			// process.exit();
 
