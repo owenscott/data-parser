@@ -317,9 +317,6 @@ var combineDataByHash = function() {
 			locations[0] = _.uniq(locations[0]);
 			locations[1] = _.uniq(locations[1]);
 			var mergedLocations = _.intersection(locations[0], locations[1]);
-			console.log(locations);
-			console.log(mergedLocations);
-			console.log('===================')
 
 			//put it into the record
 			mergedLocations.forEach(function(mergedLocation) {
