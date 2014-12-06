@@ -9,6 +9,8 @@ var	data = [];
 
 var conf = JSON.parse(fs.readFileSync('./conf.json').toString());
 
+var omits = ['ID', 'AWARD_ID', 'CODER_ID', 'ADM1', 'ADM2', 'ADM3', 'ADM4', 'WARD', 'OTHER_LOCATION', 'OTHER_LOCATION_DESC', 'hash']
+
 var fromScraped = ['URL', 'DATE1', 'DATE2']
 
 var mapKey = function(key) {
@@ -37,95 +39,118 @@ var mapKey = function(key) {
 
 //TODO: change this to QAd values instead of coded values
 
-mongoClient.connect('mongodb://' + conf.mongoHost + ':' + conf.mongoPort + '/' + conf.awardCurrentDB, function(err, db) {
+var outputDbs = conf.awardCodedDBs;
 
-	db.collection('awards').find().toArray(function(err, records) {
+console.log('Loading data for: ', JSON.stringify(outputDbs));
 
-		records.forEach(function(record) {
-			
+async.each(
+	
+	outputDbs,
 
-			var tempRecord = {};
+	//FOR EACH DB
+	function(dbName, callback) {
 
-			//add scraped fields
-			fromScraped.forEach(function(key) {
-				tempRecord[mapKey(key)] = record.scraped[key]
-			})
+		console.log('Running', dbName);
 
-			var mergedData = record.data.keyValuePairs.merge;
+		mongoClient.connect('mongodb://' + conf.mongoHost + ':' + conf.mongoPort + '/' + dbName, function(err, db) {
 
-			//add coded fields
-			_.keys(mergedData).forEach(function(key) {
-				if (mergedData[key].match === true && mapKey(key)) {
-					tempRecord[mapKey(key)] = mergedData[key].value;
-				}
-			})
-			
-			//add suppliers
-			//TODO: switch this approach post-coding
-			//TODO: actually, go back to merge and merge based on the key
-			var suppliers = record.data.arrays.originals.suppliers[0].concat(record.data.arrays.originals.suppliers[1]);
-			var nameHashs = _.chain(suppliers).map(function(s) {return s.hash.complete}).value();
-			var idHashs = _.map(suppliers, function(s) {return s.hash.code});
+			db.collection('contracts').find().toArray(function(err, records) {
 
-			function duplicateHashs(hashes) {
-				var history = {};
-				var output = [];
-				hashes.forEach(function(hash) {
-					if (history[hash]) {
-						output.push(hash);
+				console.log(records.length, 'records for', dbName);
+
+				records.forEach(function(record) {
+					
+
+					var tempRecord = {};
+
+					//add scraped fields
+					fromScraped.forEach(function(key) {
+						tempRecord[mapKey(key)] = record.scraped[key]
+					})
+
+					var mergedData = record.data.keyValuePairs.merge;
+
+					//add coded fields
+					_.keys(mergedData).forEach(function(key) {
+						if (mergedData[key].match === true && mapKey(key)) {
+							tempRecord[mapKey(key)] = mergedData[key].value;
+						}
+					})
+					
+					//add suppliers
+					//TODO: switch this approach post-coding
+					//TODO: actually, go back to merge and merge based on the key
+					var suppliers = record.data.arrays.originals.suppliers[0].concat(record.data.arrays.originals.suppliers[1]);
+					var nameHashs = _.chain(suppliers).map(function(s) {return s.hash.complete}).value();
+					var idHashs = _.map(suppliers, function(s) {return s.hash.code});
+
+					function duplicateHashs(hashes) {
+						var history = {};
+						var output = [];
+						hashes.forEach(function(hash) {
+							if (history[hash]) {
+								output.push(hash);
+							}
+							else {
+								history[hash] = 1;
+							}
+						})
+						output = _.uniq(output);
+						return output
 					}
-					else {
-						history[hash] = 1;
+
+					
+					//reduce the hash arrays to only have duplicates
+					idHashs = duplicateHashs(idHashs);
+					nameHashs = duplicateHashs(nameHashs);
+
+					function simplifySupplier (supplier) {
+						return _.omit(supplier, omits)
 					}
+
+
+					var finalSuppliers = [];
+
+					suppliers.forEach(function(supplier) {
+						if (_.contains(nameHashs, supplier.hash.complete)) {
+							finalSuppliers.push(simplifySupplier(supplier));
+						}
+						else if(supplier.hash.code && _.contains(idHashs, supplier.hash.code)) {
+							finalSuppliers.push(simplifySupplier(supplier));
+						}
+					})
+
+					finalSuppliers = _.uniq(finalSuppliers, function(m) {return JSON.stringify(m)});
+
+					tempRecord.suppliers = finalSuppliers;
+					data.push(tempRecord);
+
 				})
-				output = _.uniq(output);
-				return output
-			}
 
-			
-			//reduce the hash arrays to only have duplicates
-			idHashs = duplicateHashs(idHashs);
-			nameHashs = duplicateHashs(nameHashs);
-
-			function simplifySupplier (supplier) {
-				return _.omit(supplier, ['ID', 'AWARD_ID', 'CODER_ID', 'ADM1', 'ADM2', 'ADM3', 'ADM4', 'WARD', 'OTHER_LOCATION', 'OTHER_LOCATION_DESC', 'hash'])
-			}
+				// console.log(data);
+				console.log('data length is now', data.length);
+				db.close();
+				callback();
 
 
-			var finalSuppliers = [];
-
-			suppliers.forEach(function(supplier) {
-				if (_.contains(nameHashs, supplier.hash.complete)) {
-					finalSuppliers.push(simplifySupplier(supplier));
-				}
-				else if(supplier.hash.code && _.contains(idHashs, supplier.hash.code)) {
-					finalSuppliers.push(simplifySupplier(supplier));
-				}
 			})
 
-			finalSuppliers = _.uniq(finalSuppliers, function(m) {return JSON.stringify(m)});
-
-
-			console.log(record);
-
-			tempRecord.suppliers = finalSuppliers;
-			data.push(tempRecord);
-			console.log(tempRecord.suppliers.length);
 
 
 		})
 
-		// console.log(data);
+	},
+	
+	//ONCE ALL DBs are DONE
+	function(err) {
 
-		db.close();
-		fs.writeFileSync('./output/nepal-oap-awards' + new Date, JSON.stringify(data));
+		fs.writeFileSync('./output/nepal-awards-' + new Date().toISOString() + '-release.json', JSON.stringify(data));
+
+	}
+
+);
 
 
-	})
-
-
-
-})
 
 // // ----------------------------------------------
 // // |       PROCESS RAW DATA TO BETTER JSON      |
