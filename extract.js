@@ -9,7 +9,7 @@ var	data = [];
 
 var conf = JSON.parse(fs.readFileSync('./conf.json').toString());
 
-var omits = ['ID', 'AWARD_ID', 'CODER_ID', 'ADM1', 'ADM2', 'ADM3', 'ADM4', 'WARD', 'OTHER_LOCATION', 'OTHER_LOCATION_DESC', 'hash']
+var supplierOmits = ['ID', 'AWARD_ID', 'CODER_ID', 'WARD', 'OTHER_LOCATION', 'OTHER_LOCATION_DESC', 'hash']
 
 var fromScraped = ['URL', 'DATE1', 'DATE2']
 
@@ -30,10 +30,10 @@ var mapKey = function(key) {
 		SUPPLIER_REGISTRATION_CODE: 'supplierRegistrationCode',
 		SUPPLIER_REGISTRATION_CODE_SOURCE: 'supplierRegistrationCodeSource',
 		SUPPLIER_COUNTRY: 'supplierCountry'
-
 	}
 
 	return mapping[key] || undefined;
+
 }
 
 
@@ -72,17 +72,83 @@ async.each(
 
 					//add coded fields
 					_.keys(mergedData).forEach(function(key) {
-						if (mergedData[key].match === true && mapKey(key)) {
-							tempRecord[mapKey(key)] = mergedData[key].value;
-						}
+						// if (mergedData[key].match === true && mapKey(key)) {
+						// 	tempRecord[mapKey(key)] = mergedData[key].value;
+						// }
+						if ( mapKey(key) && ( mergedData[key].cleanValue || mergedData[key].value ) ) {
+							tempRecord[mapKey(key)] = mergedData[key].cleanValue || mergedData[key].value;
+						} 
 					})
 					
 					//add suppliers
 					//TODO: switch this approach post-coding
 					//TODO: actually, go back to merge and merge based on the key
-					var suppliers = record.data.arrays.originals.suppliers[0].concat(record.data.arrays.originals.suppliers[1]);
+
 					var nameHashs = _.chain(suppliers).map(function(s) {return s.hash.complete}).value();
 					var idHashs = _.map(suppliers, function(s) {return s.hash.code});
+
+					// var suppliers = record.data.arrays.originals.suppliers[0].concat(record.data.arrays.originals.suppliers[1]);
+					var supplierStrings = record.data.arrays.merge.locations;
+					
+					function parseSupplierString(supplierString) {
+						supplierString = supplierString.value;	
+						var locationOfSupplier = supplierString.search(/Supplier: /);
+						var locationOfCode = supplierString.search(/RegistrationCode:/);
+						var locationOfLocation = supplierString.search(/Location: /);
+
+						var location = supplier = code = '';
+
+						// crappy code to find supplier
+						if (locationOfCode >= 0 ) {
+							var supplier = supplierString.substr(10, locationOfCode - 12);
+						}
+						else if (locationOfLocation >= 0) {
+							var supplier = supplierString.substr(10, locationOfLocation - 12);
+						}
+						else if (locationOfSupplier>= 0) {
+							var supplier = supplierString.substr(10, supplierString.length);
+						}
+
+						//crappy code to find registration code
+						if(locationOfCode >= 0) {
+							if (locationOfLocation >= 0) {
+								var code = supplierString.substr(locationOfCode + 'RegistrationCode:'.length, locationOfLocation - locationOfCode - 'RegistrationCode:'.length - 2).trim();
+							}
+							else {
+								var code = supplierString.substr(locationOfCode + 'RegistrationCode:'.length, supplierString.length).trim();
+							}
+						}
+
+						if(locationOfLocation >= 0) {
+							var location = supplierString.substr(locationOfLocation + 'Location: '.length, supplierString.length).trim();
+							var locationArray = location.split(/\//);
+						}
+
+						var resultObj = {}
+
+						if (supplier) {
+							resultObj['SUPPLIER_NAME'] = supplier;
+						}
+						if (code) {
+							resultObj['SUPPLIER_REGISTRATION_CODE'] = code;
+						}
+						if (locationArray) {
+							locationArray.forEach(function(loc, i) {
+								if (loc.trim()) {
+									resultObj['ADM' + (i+1)] = loc									
+								} 
+
+							})
+						}
+						//crappy code to find location
+						console.log(resultObj);
+						return resultObj;
+					
+					}
+
+					var suppliers = supplierStrings.map(parseSupplierString);
+
+
 
 					function duplicateHashs(hashes) {
 						var history = {};
@@ -105,20 +171,24 @@ async.each(
 					nameHashs = duplicateHashs(nameHashs);
 
 					function simplifySupplier (supplier) {
-						return _.omit(supplier, omits)
+						return _.omit(supplier, supplierOmits)
 					}
 
 
 					var finalSuppliers = [];
 
 					suppliers.forEach(function(supplier) {
-						if (_.contains(nameHashs, supplier.hash.complete)) {
-							finalSuppliers.push(simplifySupplier(supplier));
-						}
-						else if(supplier.hash.code && _.contains(idHashs, supplier.hash.code)) {
-							finalSuppliers.push(simplifySupplier(supplier));
-						}
+						// if (_.contains(nameHashs, supplier.hash.complete)) {
+						// 	finalSuppliers.push(simplifySupplier(supplier));
+						// }
+						// else if(supplier.hash.code && _.contains(idHashs, supplier.hash.code)) {
+						// 	finalSuppliers.push(simplifySupplier(supplier));
+						// }
+
+						finalSuppliers.push(simplifySupplier(supplier));
 					})
+
+
 
 					finalSuppliers = _.uniq(finalSuppliers, function(m) {return JSON.stringify(m)});
 
