@@ -66,6 +66,14 @@ async.each(
 					//add scraped fields
 					fromScraped.forEach(function(key) {
 						tempRecord[mapKey(key)] = record.scraped[key]
+						if (mapKey(key) === 'completionDate') {
+							if (!record.scraped[key].match(/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/)) {
+								// tempRecord.badDate = true;
+							}
+							else {
+								// tempRecord.badDate = false;
+							}
+						}
 					})
 
 					var mergedData = record.data.keyValuePairs.merge;
@@ -90,61 +98,7 @@ async.each(
 					// var suppliers = record.data.arrays.originals.suppliers[0].concat(record.data.arrays.originals.suppliers[1]);
 					var supplierStrings = record.data.arrays.merge.locations;
 					
-					function parseSupplierString(supplierString) {
-						supplierString = supplierString.value;	
-						var locationOfSupplier = supplierString.search(/Supplier: /);
-						var locationOfCode = supplierString.search(/RegistrationCode:/);
-						var locationOfLocation = supplierString.search(/Location: /);
-
-						var location = supplier = code = '';
-
-						// crappy code to find supplier
-						if (locationOfCode >= 0 ) {
-							var supplier = supplierString.substr(10, locationOfCode - 12);
-						}
-						else if (locationOfLocation >= 0) {
-							var supplier = supplierString.substr(10, locationOfLocation - 12);
-						}
-						else if (locationOfSupplier>= 0) {
-							var supplier = supplierString.substr(10, supplierString.length);
-						}
-
-						//crappy code to find registration code
-						if(locationOfCode >= 0) {
-							if (locationOfLocation >= 0) {
-								var code = supplierString.substr(locationOfCode + 'RegistrationCode:'.length, locationOfLocation - locationOfCode - 'RegistrationCode:'.length - 2).trim();
-							}
-							else {
-								var code = supplierString.substr(locationOfCode + 'RegistrationCode:'.length, supplierString.length).trim();
-							}
-						}
-
-						if(locationOfLocation >= 0) {
-							var location = supplierString.substr(locationOfLocation + 'Location: '.length, supplierString.length).trim();
-							var locationArray = location.split(/\//);
-						}
-
-						var resultObj = {}
-
-						if (supplier) {
-							resultObj['SUPPLIER_NAME'] = supplier;
-						}
-						if (code) {
-							resultObj['SUPPLIER_REGISTRATION_CODE'] = code;
-						}
-						if (locationArray) {
-							locationArray.forEach(function(loc, i) {
-								if (loc.trim()) {
-									resultObj['ADM' + (i+1)] = loc									
-								} 
-
-							})
-						}
-						//crappy code to find location
-						console.log(resultObj);
-						return resultObj;
-					
-					}
+	
 
 					var suppliers = supplierStrings.map(parseSupplierString);
 
@@ -365,3 +319,59 @@ async.each(
 // 		fs.writeFileSync('./output/draft-output-for-anjesh-7-30.json', JSON.stringify(data));
 // 	}
 // );
+
+
+function parseSupplierString(supplierString) {
+	supplierString = supplierString.value;	
+	var locationOfSupplier = supplierString.search(/Supplier: /);
+	var locationOfCode = supplierString.search(/RegistrationCode:/);
+	var locationOfLocation = supplierString.search(/Location: /);
+
+	var location = supplier = code = '';
+
+	// crappy code to find supplier
+	if (locationOfCode >= 0 ) {
+		var supplier = supplierString.substr(10, locationOfCode - 12);
+	}
+	else if (locationOfLocation >= 0) {
+		var supplier = supplierString.substr(10, locationOfLocation - 12);
+	}
+	else if (locationOfSupplier>= 0) {
+		var supplier = supplierString.substr(10, supplierString.length);
+	}
+
+	//crappy code to find registration code
+	if(locationOfCode >= 0) {
+		if (locationOfLocation >= 0) {
+			var code = supplierString.substr(locationOfCode + 'RegistrationCode:'.length, locationOfLocation - locationOfCode - 'RegistrationCode:'.length - 2).trim();
+		}
+		else {
+			var code = supplierString.substr(locationOfCode + 'RegistrationCode:'.length, supplierString.length).trim();
+		}
+	}
+
+	if(locationOfLocation >= 0) {
+		var location = supplierString.substr(locationOfLocation + 'Location: '.length, supplierString.length).trim();
+		var locationArray = location.split(/\//);
+	}
+
+	var resultObj = {}
+
+	if (supplier) {
+		resultObj['supplierName'] = supplier;
+	}
+	if (code) {
+		resultObj['supplierRegistrationCode'] = code;
+	}
+	if (locationArray) {
+		locationArray.forEach(function(loc, i) {
+			if (loc.trim()) {
+				resultObj['adm' + (i+1)] = loc									
+			} 
+
+		})
+	}
+	//crappy code to find location
+	return resultObj;
+
+}
